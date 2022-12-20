@@ -1,5 +1,5 @@
 
-# <div style="display: flex; justify-content: center; align-items: center"><img height="50px" src="source/images/tranquility.svg"/> 致远</div>
+<h1 style="display: flex; justify-content: center; align-items: center"><img height="50px" src="source/images/tranquility.svg"/> 致远</h1>
 
 <p align="center">致远是一款 Hexo 主题，主要为个人主页及多学科领域博主设计。</p>
 
@@ -86,6 +86,8 @@ selected: true
 目前主题支持 3 种时间线事件，分别为“文章”、“事件”、“App”。文章则通过上述配置 `selected:true` 来添加到时间线。“事件”则需要在文章种配置 `type: event`，“APP”则配置为 `type: app`。
 
 这 3 种时间线事件会在主页时间线使用不同的颜色和图标展示，并默认展示“事件”和“App”，通过点击“时间线”旁边的 Radio 可以进行筛选。
+
+![timeline](doc/images/timeline.gif)
 
 *这三种事件的命名是常量，不可配置的，因此你不必受其名称影响，例如你可以使用 app 来标记其他类型的事件。这里后续会考虑进行配置化处理。*
 
