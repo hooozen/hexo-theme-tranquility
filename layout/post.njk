@@ -1,0 +1,119 @@
+{% extends "_partials/layout.njk" %}
+{% block link %}
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  {% if theme.gitalk.enable %}<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />{% endif %}
+{% endblock link %}
+{% block body %}
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">{{ page.title or "未命名" }}</div>
+        <div class="post-info">
+          {% for tag in page.tags.toArray()%}
+            <a href="{{ url_for(tag.path)}}" class="post-tag">#{{ tag.name }}</a>
+          {% endfor %}
+          <span class="post-date">{{ date(page.date) }}</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        {% if page.photos %}
+          <div class="post-gallery">
+            {% for photo in page.photos %}<img src="{{ photo }}" />{% endfor %}
+          </div>
+        {% endif %}
+        {{ page.content }}
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    {% if theme.reward.enable %}
+      <div class="like-author">
+        <input type="checkbox" id="likeCode" />
+        <div class="author-face">
+          <img height="100px"
+               width="100px"
+               id="front-face"
+               alt="author face"
+               src="{{ theme.reward.face }}"/>
+          <img height="100px"
+               width="100px"
+               id="back-face"
+               alt="like code"
+               src="{{ theme.reward.paycode }}"/>
+        </div>
+        <div class="like-text">{{ theme.reward.text }}</div>
+        <label for="likeCode" class="like-btn">
+          <svg viewBox="0 0 1024 1024"
+               width="20px"
+               style="margin-right: 10px"
+               height="20px">
+            <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242"/>
+          </svg>
+          {{ theme.reward.btnText }}
+        </label>
+      </div>
+    {% endif %}
+    <div class="post-nav">
+      {% if page.prev %}
+        <a class="post-nav-item-left" href="{{ url_for(page.prev.path)}}">
+          <div class="text-align">
+            <svg t="1670570876164"
+                 class="icon"
+                 viewBox="0 0 1024 1024"
+                 width="16"
+                 height="16">
+              <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+            </svg>
+            <span class="text-small">上一篇</span>
+          </div>
+          <div>{{ page.prev.title or "未命名" }}</div>
+        </a>
+      {% else %}
+        <div class="post-nav-item-left"></div>
+      {% endif %}
+      <div class="vhr"></div>
+      {% if page.next %}
+        <a class="post-nav-item-right" href="{{ url_for(page.next.path)}}">
+          <div class="text-align">
+            <span class="text-small">下一篇</span>
+            <svg t="1670570876164"
+                 class="icon"
+                 viewBox="0 0 1024 1024"
+                 transform="scale(-1,-1)"
+                 width="16"
+                 height="16">
+              <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+            </svg>
+          </div>
+          {{ page.next.title or "未命名" }}
+        </a>
+      {% else %}
+        <div class="post-nav-item-right"></div>
+      {% endif %}
+    </div>
+    <div class="related-post">
+      <div class="related__head">
+        {% for tag in page.tags.toArray()%}
+          <a href="{{ url_for(tag.path)}}" class="post-tag">#{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+      <div class="realated__body">
+        {{
+        htmlGenerator(popular_posts_json({maxCount: 5, PPMixingRate:0.4}, page))
+        }}
+      </div>
+    </div>
+    <div id="gitalk-container"></div>
+  </div>
+{% endblock body %}
+{% block script %}
+  {% if theme.gitalk.enable %}
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+      const param = {{theme.gitalk | dump}}
+      param.id = location.pathname
+      const gitalk = new Gitalk(param)
+      gitalk.render('gitalk-container')
+    </script>
+  {% endif %}
+{% endblock script %}

@@ -1,0 +1,90 @@
+{% extends "_partials/layout.njk" %}
+{% block link %}
+  {% if theme.baidu_site_verification %}
+    <meta name="baidu-site-verification"
+          content="{{ theme.baidu_site_verification }}"/>
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+{% endblock link %}
+{% block body %}
+  <div class="wall wall-index">
+    <div class="wall-main" id="wall-main">
+      <div class="wall-title">{{ config.title | upper }}</div>
+      <div class="wall-subtitle">{{ config.subtitle }}</div>
+      <div class="wall-description">{{ theme.slogan }}</div>
+    </div>
+    <div class="wall-bg">
+      <div class="wall-bg-index">
+        <div class="hello-world">
+          <div>> Hello world</div>
+          <div class="cursor"></div>
+        </div>
+        <div class="normal-eqt">
+          <img alt="normal" width="300px" height="" src="/images/normal.svg" />
+        </div>
+        <canvas width="400" height="400" id="heart-curve"></canvas>
+        <div class="motto">{{ theme.index.motto }}</div>
+        <div class="poem">
+          {% for line in theme.index.poem %}
+            {{ line }}
+            <br/>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <div class="about-photo"
+         style="background-image: url({{ theme.index.photo }})"></div>
+    <div class="about-text">
+      <div class="about-title">
+        {% for word in theme.index.about.title %}<div class="matts">{{ word }}</div>{% endfor %}
+      </div>
+      <div class="about-detail">
+        <div class="about-text-p">
+          {% for line in theme.index.about.text %}
+            {% if not line %}
+              <br/>
+            {% else %}
+              {{ line }}
+              <br />
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-head">
+      <div class="title">时间线</div>
+      <div class="radio-wrapper">
+        <div class="radio">
+          <input id="radio-article" type="checkbox" />
+          <label class="radio-skin--yellow" for="radio-article"></label>
+        </div>
+        <div class="radio">
+          <input id="radio-app" type="checkbox" checked />
+          <label class="radio-skin--green" for="radio-app"></label>
+        </div>
+        <div class="radio">
+          <input id="radio-event" type="checkbox" checked />
+          <label class="radio-skin--blue" for="radio-event"></label>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-body">
+      <div class="timeline-item-first">
+        <div class="line-anchor line-anchor--now"></div>
+      </div>
+      <div class="timeline-list" id="timeline-list"></div>
+      <div class="timeline-item-last">
+        <div class="line-anchor line-anchor--end"></div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
+{% block script %}
+  {% include "_partials/scripts/HeartCurve.njk" %}
+  {% from "_partials/scripts/TimeLine.njk" import timeline %}
+  {{ timeline(site.timelineData)}}
+{% endblock script %}

@@ -1,0 +1,86 @@
+@import '_variables';
+
+$table-odd-line-bg = $whitesoke-light;
+
+@font-face {
+  font-family: sourceHanSerif;
+  src: url('/font/SourceHanSerifCN-VF.otf.woff2');
+}
+
+@font-face {
+  font-family: sourceSans;
+  src: url('/font/SourceSans3-Regular.ttf.woff2');
+}
+
+@import '_variables';
+
+html {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  color: $text-color;
+  text-align: justify;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $link-color;
+}
+
+a:hover {
+  color: $link-hover-color;
+}
+
+blockquote {
+  border-left: 4px solid $grey-lighter;
+  margin: 0;
+  padding-left: 1em;
+  color: $black-lighter;
+}
+
+iframe, img, video {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: $font-size-small;
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+caption, td, th {
+  padding: 8px;
+  vertical-align: middle;
+  border: 1px solid $grey-lighter;
+}
+
+caption {
+  border: none;
+}
+
+th {
+  border-bottom-width: 3px;
+}
+
+tbody tr:nth-of-type(odd) {
+  background: $table-odd-line-bg;
+}
+
+figure figcaption {
+  text-align: center;
+  font-size: $font-size-smaller;
+  color: $blak-lighter;
+}
+
+p, figure {
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}

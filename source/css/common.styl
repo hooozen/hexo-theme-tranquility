@@ -1,0 +1,256 @@
+@import '_variables';
+@import 'normal';
+@import 'highlight'; /* layout */
+
+.wall {
+  user-select: none;
+  -webkit-user-select: none;
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: $max-width;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.wall-main {
+  width: 100%;
+}
+
+/* text */
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.text-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
+
+.text-align {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* active link */
+.hover-line {
+  position: relative;
+}
+
+.hover-line::after {
+  transition: width 200ms ease-out;
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: -2px;
+  background-color: #000;
+}
+
+.hover-line:hover::after {
+  width: 100%;
+}
+
+/* paginator */
+.paginator {
+  display: flex;
+  align-items: center;
+}
+
+.page-number.current {
+  background-color: $black-dim;
+  color: #fff;
+}
+
+.page-number {
+  text-decoration: none;
+  color: $black-dim;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  width: 26px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid $black-dim;
+  margin: 0 8px;
+  transition: all 200ms ease-out;
+}
+
+.page-number:hover {
+  background-color: $black-light;
+  color: #fff;
+}
+
+/* post */
+.post-info {
+  font-size: 16px;
+  color: $grey;
+  margin: 4px 0;
+}
+
+.post-date {
+  margin: 0 10px;
+}
+
+.post-tag {
+  text-decoration: none;
+  font-size: 16px;
+  color: #2c5fa5;
+  display: inline-block;
+  margin-right: 8px;
+  transition: color 200ms ease-out;
+}
+
+.post-tag:hover {
+  color: #2472e7;
+}
+
+/* reward */
+.author-face {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#likeCode {
+  width: 0;
+  height: 0;
+}
+
+#front-face {
+  transform: rotateY(0);
+}
+
+#back-face {
+  transform: rotateY(180deg);
+}
+
+#front-face, #back-face {
+  transition: transform 200ms ease-in;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.author-face img {
+  height: 100px;
+  width: 100px;
+}
+
+#likeCode:checked~.like-btn {
+  filter: saturate(100%);
+}
+
+#likeCode:checked~.like-btn svg {
+  animation: heartbeat 600ms ease-out infinite;
+}
+
+#likeCode:checked~.author-face #back-face {
+  transform: rotateY(0);
+}
+
+#likeCode:checked~.author-face #front-face {
+  transform: rotateY(180deg);
+}
+
+.like-author {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-btn {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  line-height: 2em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  border: 1px solid #ee4242;
+  filter: saturate(40%);
+  padding: 6px 30px;
+  transition: all 300ms ease-in;
+  color: #ee4242;
+}
+
+.like-text {
+  font-family: sourceHanSerif;
+  margin: 0.5em 0 1em;
+  font-weight: bold;
+  color: $black-lighter;
+}
+
+.like-btn:hover svg {
+  animation: heartbeat 1s ease-out infinite;
+}
+
+@media (hover: none) {
+  .like-btn svg {
+    animation: heartbeat 1s ease-out infinite;
+  }
+}
+
+/* matts */
+.matts {
+  cursor: default;
+  display: inline-flex;
+  background: url('/images/matts.svg') center center / contain no-repeat;
+  align-items: center;
+  padding: 8px;
+  transition: opacity 200ms ease-out;
+}
+
+.matts:hover {
+  opacity: 0.8;
+}
+
+.matts-space {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+}
+
+/* animation */
+@keyframes flyInLeft {
+  from {
+    transform: translateX(-100px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.8);
+  }
+
+  20% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}

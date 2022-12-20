@@ -1,0 +1,128 @@
+<script type="text/javascript">
+  function HeartCurve(w, h) {
+    this.w = w;
+    this.h = h;
+    this.a = undefined;
+    this.ctx = undefined;
+    this.deg = 0;
+    this.speed = 0.4;
+    this.isPause = false;
+    this.init();
+  }
+  HeartCurve.prototype.init = function () {
+    const {
+      w,
+      h
+    } = this;
+    const canvas = document.querySelector('#heart-curve');
+    if (!canvas) throw Error('no canvas element!');
+
+    this.ctx = canvas.getContext('2d');
+    this.ctx.translate(2 * w / 3, h / 2);
+    this.ctx.lineJoin = 'round';
+    this.a = w / 6.2;
+    this.id = null;
+    return this;
+  };
+  HeartCurve.prototype._drawAxis = function () {
+    const {
+      ctx,
+      w,
+      h
+    } = this;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#999";
+    ctx.beginPath();
+    ctx.moveTo(-w * 2 / 3, 0);
+    ctx.lineTo(w / 3, 0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, -h * 0.48);
+    ctx.lineTo(0, h * 0.48);
+    ctx.stroke();
+  };
+  HeartCurve.prototype._drawCure = function () {
+    const {
+      ctx,
+      a
+    } = this;
+    ctx.beginPath();
+    let x, y, deg = 0;
+    ctx.moveTo(0, 0);
+    ctx.strokeStyle = "#ff0000";
+    while (deg <= 360) {
+      const theta = deg / 180 * Math.PI;
+      r = 2 * a * (1 - Math.cos(theta));
+      x = r * Math.cos(theta);
+      y = r * Math.sin(theta);
+      ctx.lineTo(x, y);
+      deg++;
+    }
+    ctx.stroke();
+  };
+  HeartCurve.prototype.spin = function () {
+    let {
+      a,
+      w,
+      h,
+      deg,
+      ctx
+    } = this;
+    if (deg >= 360) deg = 0;
+
+    ctx.clearRect(-w / 3 * 2, -h / 2, w, h);
+    const theta = deg / 180 * Math.PI;
+    this._drawAxis();
+    ctx.lineWidth = 2;
+    this._drawCure();
+    ctx.strokeStyle = "#000";
+    ctx.beginPath();
+    ctx.arc(-a, 0, a, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(2 * a * Math.cos(theta) - a, 2 * a * Math.sin(theta), a, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.beginPath();
+    let r = 2 * a * (1 - Math.cos(theta));
+    let x = r * Math.cos(theta);
+    let y = r * Math.sin(theta);
+    ctx.arc(x, y, 3, 0, 2 * Math.PI);
+    ctx.fill();
+    if (this.isPause) return;
+
+    this.deg = deg + this.speed;
+    this.id = window.requestAnimationFrame(this.spin.bind(this));
+  };
+  HeartCurve.prototype.pause = function () {
+    this.isPause = true;
+    if (window.cancelAnimationFrame) {
+      window.cancelAnimationFrame(this.id);
+    }
+  };
+  HeartCurve.prototype.resume = function () {
+    this.isPause = false;
+    this.spin();
+  };
+
+  (function () {
+    const heartCurve = new HeartCurve(400, 400);
+    heartCurve.spin();
+    mobileAdjust(window.matchMedia("(hover:none"));
+    window.matchMedia("(hover:none)").addListener(mobileAdjust);
+
+    function mobileAdjust(media) {
+      const wallEl = document.querySelector('#wall-main')
+      if (!media.matches) {
+        heartCurve.pause();
+        wallEl.addEventListener('mouseenter', () => {
+          console.log('resume');
+          heartCurve.resume();
+        });
+        wallEl.addEventListener('mouseleave', () => {
+          console.log('pause');
+          heartCurve.pause();
+        });
+      }
+    }
+  })();
+</script>

@@ -1,0 +1,83 @@
+@import '_variables';
+
+$code-line-number-bg = $white-blue;
+
+/* highlight */
+.highlight figcaption {
+  display: flex;
+  justify-content: space-between;
+  background: $code-line-number-bg;
+  padding: 0.1em 0.5em;
+  font-size: $font-size-small;
+}
+
+.highlight td {
+  padding: 0;
+  border: 0;
+}
+
+code {
+  border-radius: 3px;
+  font-size: 0.875em;
+  padding: 2px 4px;
+  overflow-wrap: break-word;
+}
+
+pre, code {
+  font-family: consolas, Menlo, monospace, 'PingFang SC', 'Microsoft YaHei';
+}
+
+figure.highlight {
+  margin: 20px 0;
+  overflow: auto;
+  position: relative;
+  padding-top: 30px;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  line-height: 1.5em;
+
+  table {
+    width: auto;
+    border: 0;
+    margin: 0;
+  }
+}
+
+figure.highlight::before {
+  background: #fc625d;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+  left: 12px;
+  margin-top: -20px;
+  position: absolute;
+  border-radius: 50%;
+  content: ' ';
+  height: 12px;
+  width: 12px;
+}
+
+figure.highlight .code pre {
+  padding-left: 10px;
+  width: 100%;
+}
+
+figure.highlight pre {
+  border: 0;
+  margin: 0;
+  padding: 10px 0;
+}
+
+code, pre, figure.highlight {
+  background-color: #f7f7f7;
+}
+
+.gutter {
+  padding: 0;
+}
+
+figure.highlight .gutter pre {
+  text-align: right;
+  margin: 0;
+  padding: 10px;
+  color: $grey;
+  background-color: $code-line-number-bg;
+}

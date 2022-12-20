@@ -1,0 +1,108 @@
+@import url('/css/hljs-github.css');
+@import '_variables';
+
+.body {
+  line-height: 2em;
+  overflow: hidden;
+}
+
+.post-inner {
+  margin: 0 auto;
+  max-width: 900px;
+
+  .video-container {
+    height: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding-top: 75%;
+    position: relative;
+    width: 100%;
+
+    iframe {
+      height: 100%;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+.post-content {
+  padding: 10px 0;
+}
+
+.post-gallery {
+  align-items: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.post-title {
+  font-size: 30px;
+}
+
+.post-content__head {
+  margin: 40px 0;
+}
+
+.post__foot {
+  max-width: 900px;
+  margin: 100px auto;
+}
+
+.post-nav {
+  position: relative;
+  margin-top: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .vhr {
+    position: absolute;
+    height: 50px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: $whitesmoke;
+    width: 1px;
+  }
+}
+
+.post-nav-item {
+  text-decoration: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &-left {
+    @extend .post-nav-item;
+    align-items: flex-start;
+    padding-right: 15px;
+  }
+
+  &-right {
+    @extend .post-nav-item;
+    align-items: flex-end;
+    padding-left: 15px;
+  }
+}
+
+.related-post {
+  margin: 40px 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .post-content, .post__foot {
+    padding: 0 30px;
+  }
+
+  .post-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}

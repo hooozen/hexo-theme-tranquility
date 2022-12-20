@@ -1,0 +1,48 @@
+{% macro timeline(data) %}
+  <script type="text/javascript">
+    const timelineData = {{ data | dump }}
+    listEl = document.querySelector("#timeline-list");
+    radioApp = document.querySelector("#radio-app");
+    radioArticle = document.querySelector("#radio-article");
+    radioEvent = document.querySelector("#radio-event");
+    const visibleType = {
+      app: true,
+      article: false,
+      event: true
+    };
+    radioApp.addEventListener('change', e => updateList('app', e.target.checked));
+    radioArticle.addEventListener('change', e => updateList('article', e.target.checked));
+    radioEvent.addEventListener('change', e => updateList('event', e.target.checked));
+
+    function updateList(type, value) {
+      listDom.filter(line => line.type === type)
+        .forEach(line => {
+          if (value) {
+            line.el.className = line.el.className
+              .replace(/--hidden$/, "");
+          } else
+            line.el.className += "--hidden";
+        });
+    }
+    const listDom = timelineData.map(t => getLine(t));
+    listEl.append(...listDom.map(i => i.el));
+    updateList('article', false);
+
+    function getLine(data) {
+      const item = document.createElement("DIV");
+      item.className = `timeline-item-${data.type} timeline-item`;
+      item.innerHTML = `
+                          <div class="line-date">
+                          <div class="line-date-tag">${data.date}</div></div>
+                          <div class="line-anchor"></div>
+                          <div class="line-title">
+                              <img class="text-icon" src="/images/icon/icon-${data.type}.svg"/><a class="timeline-post" href="${data.path}">${data.title}</a>
+                          </div>
+                          `;
+      return {
+        el: item,
+        type: data.type,
+      };
+    };
+  </script >
+  {% endmacro %}

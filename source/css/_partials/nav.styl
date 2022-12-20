@@ -1,0 +1,134 @@
+@import '../_variables';
+
+.nav {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  height: 90px;
+  font-weight: bold;
+}
+
+#navBtn {
+  top: -10px;
+  position: fixed;
+  height: 0;
+  width: 0;
+}
+
+.nav-btn {
+  display: none;
+}
+
+.nav-logo {
+  height: 60px;
+  width: 60px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu-item {
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.nav-menu-item:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 99;
+  }
+
+  .body {
+    padding-top: 60px;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    height: 0;
+    transition: height 200ms ease-out;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+  }
+
+  .nav-menu-item {
+    margin: 20px 0;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-logo {
+    height: 40px;
+    width: 40px;
+
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .nav-btn {
+    display: block;
+    position: absolute;
+    left: 0;
+    padding: 10px 20px;
+    height: 40px;
+    width: 40px;
+
+    &::before, &::after {
+      transition: transform 200ms ease-out;
+      content: '';
+      background: $black-dim;
+      width: 30px;
+      height: 2px;
+      border-radius: 1px;
+      position: absolute;
+    }
+
+    &::before {
+      top: 25px;
+    }
+
+    &::after {
+      bottom: 25px;
+    }
+  }
+
+  #navBtn:checked ~ .nav-menu {
+    height: 100%;
+  }
+
+  #navBtn:checked ~ .nav-btn {
+    &::before {
+      transform: translateY(4px) rotateZ(45deg);
+    }
+
+    &::after {
+      transform: translateY(-4px) rotateZ(-45deg);
+    }
+  }
+}

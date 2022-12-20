@@ -1,0 +1,32 @@
+{% extends "_partials/layout.njk" %}
+{% block link %}
+  <link rel="stylesheet" type="text/css" href="/css/category.css" />
+{% endblock link %}
+{% block body %}
+  <div class="tag-page-title">#{{ page.tag }}</div>
+  <div class="post-list">
+    {% for p in page.posts.toArray()%}
+      <div class="post-card">
+        <div class="post__head">
+          <a href="{{ url_for(p.path) }}" class="post-title hover-line">{{ p.title }}</a>
+        </div>
+        <div class="post__body">
+          {% if p.cover %}
+            <a href="{{ url_for(p.path)}}"
+               class="post-cover"
+               style="background-image: url({{ url_for(p.cover)}})"></a>
+          {% endif %}
+          <div class="post-excerpt">{{ p.excerpt }}</div>
+        </div>
+        <div class="post__foot">
+          <div class="post-tags">
+            {% for tag in p.tags.toArray() %}
+              <a href="{{ url_for(tag.path)}}" class="post-tag">#{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% if page.prev or page.next %}<div class="paginator">{{ paginator({prev_next: false})}}</div>{% endif %}
+  </div>
+{% endblock body %}
