@@ -1,5 +1,5 @@
 
-<h1 style="display: flex; justify-content: center; align-items: center"><img height="50px" src="source/images/tranquility.svg"/> 致远</h1>
+<h1> <div align="center"><img align="center" height="40" src="source/images/tranquility.svg"/> 致远</div></h1>
 
 <p align="center">致远是一款 Hexo 主题，主要为个人主页及多学科领域博主设计。</p>
 
@@ -103,3 +103,7 @@ selected: true
 * gitalk 文章评论
 * 百度 SEO
 * 等
+
+------
+
+主题不断完善中，有问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。
