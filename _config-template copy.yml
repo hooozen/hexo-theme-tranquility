@@ -2,24 +2,24 @@ slogan: “宁静致远”
 email: example@email.com
 logo: "/images/logo.svg"
 
-mathjax: false
+mathjax: false # 加载 LateX 数学公式库
 
-favicon:
+favicon: # 配置网页图标
   small: /images/favicon-16x16.png
   medium: /images/favicon-32x32.png
   apple_touch_icon: /images/apple-touch-icon.png
   safari_pinned_tab: /images/logo.svg
 
-subpage:
+subpage: # 开启“子页”功能，详见 README
   enable: false
   pages:
-    - name:
+    - name: # 文章的分类（category）名，如 developer
       path: # 若不设置则默认使用 name
-      title:
-      icon: #
-      description:
+      title: # 菜单名，如 开发者
+      icon: # 图标的路径
+      description: # 描述
 
-index:
+index: # 配置首页个性化内容
   motto: "应无所住 而生其心"
   poem:
     - 君不见高堂明镜悲白发
@@ -39,11 +39,11 @@ foot:
     - "海内存知己"
     - "天涯若比邻"
 
-links:
+links: # 朋友
   - name: "Theme Tranquility"
     url: https://marie0909.github.io/
 
-social:
+social: # 账号
   - name: "github"
     icon: "/images/logo-github.svg"
     url: https://github.com/
@@ -54,14 +54,14 @@ social:
     icon: "/images/logo-zh.svg"
     url: https://www.zhihu.com/
 
-reward:
+reward: # 赞赏
   enable: false
-  face:
-  paycode:
+  face: # 头像图片
+  paycode: # 支付码图片
   text: “请作者喝杯咖啡”
   btnText: 喜欢作者
 
-gitalk:
+gitalk: # gitalk 评论
   enable: false
   owner: # MUST HAVE, Your Github Username
   admin:
