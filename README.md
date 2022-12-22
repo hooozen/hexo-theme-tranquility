@@ -70,7 +70,7 @@ subpage: # 开启“子页”功能，详见 README
 
 为文章添加 `selected` 字段并设置为 `true` 即可添加至首页时间线中。如：
 
-``` md
+```
 ---
 id: 57
 title: 多少冬天
@@ -92,6 +92,15 @@ selected: true
 *这三种事件的命名是常量，不可配置的，因此你不必受其名称影响，例如你可以使用 app 来标记其他类型的事件。这里后续会考虑进行配置化处理。*
 
 ### 其他
+
+文章列表封面图片的配置，通过设置文章头部信息的 `cover` 字段配置，例如:
+```
+---
+title: 题目
+cover: https://img.shields.io/github/license/hooozen/hexo-theme-tranquility
+...
+---
+```
 
 其他配置参考主题目录下 `_config.yml` 的注释，包括：
 
