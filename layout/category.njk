@@ -40,7 +40,7 @@
         </script>
         <div id="tags-outer">
           <canvas width="500" height="500" id="tagCanvas">
-            {% if theme.subpage.enable %}
+            {% if theme.subpage.enable and page.tags %}
               {{ tagcloud(page.tags, {min_font: 14, max_font: 30}) }}
             {% else %}
               {{ list_tags() }}
@@ -65,11 +65,7 @@
           <div class="post-excerpt">{{ p.excerpt }}</div>
         </div>
         <div class="post__foot">
-          <div class="post-tags">
-            {% for tag in p.tags.toArray() %}
-              <a href="{{ url_for(tag.path)}}" class="post-tag">#{{ tag.name }}</a>
-            {% endfor %}
-          </div>
+          <div class="post-tags">{{ partial("_partials/macros/tags.njk", {tags: p.tags}) }}</div>
         </div>
       </div>
     {% endfor %}

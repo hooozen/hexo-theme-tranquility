@@ -1,0 +1,8 @@
+<div class="related-post">
+  <div class="related__head">{{ partial("_partials/macros/tags.njk", {tags: page.tags}) }}</div>
+  <div class="realated__body">
+    {{
+    htmlGenerator(popular_posts_json(theme.related_post.config, page))
+    }}
+  </div>
+</div>
