@@ -4,6 +4,8 @@
 <p align="center">致远是一款 Hexo 主题，主要为个人主页及多学科领域博主设计。</p>
 
 <p align="center">
+<a href="https://github.com/hooozen/hexo-theme-tranquility/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/hooozen/hexo-theme-tranquility?label=release&color=orange"></a>
+<a href="https://hexo.io/"><img src="https://img.shields.io/badge/Hexo-%3E%3D6.3.0-blue?logo=hexo"></a>
 <a href="https://github.com/hooozen/hexo-theme-tranquility/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hooozen/hexo-theme-tranquility"></a>
 
 <img src="./doc/images/index.png"/>
