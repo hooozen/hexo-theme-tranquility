@@ -2,8 +2,10 @@
 
 'use strict';
 
-
+const chalk = require('chalk');
 const pagination = require('hexo-pagination');
+
+
 
 module.exports = ctx => {
   ctx.config.subpage_generator = Object.assign({
@@ -47,7 +49,19 @@ function subpage_generator(locals) {
 
   return ctx.theme.config.subpage.pages.reduce((result, page) => {
     const category = locals.categories.findOne({ name: page.name });
-    if (!category || !category.length) return result;
+    let path = page.path || page.name;
+    path = path.endsWith('/') ? path : path + '/';
+    if (!category || !category.length) {
+      console.warn(chalk.yellow(`Warn: There is no post in subpage '${page.title}'`));
+      console.log(path);
+      return result.concat([{
+        path,
+        layout: ['category', 'archive', 'index'],
+        data: {
+          ...page,
+        }
+      }]);
+    }
 
     const posts = category.posts.sort(orderBy);
     const ids = getTagIds(category);
@@ -55,7 +69,7 @@ function subpage_generator(locals) {
     const Tag = ctx.model('Tag');
     const tags = Tag.find({ _id: { $in: ids } });
 
-    const data = pagination(page.path || page.name, posts, {
+    const data = pagination(path, posts, {
       perPage,
       layout: ['category', 'archive', 'index'],
       format: paginationDir + '/%d/',

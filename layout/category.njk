@@ -51,24 +51,28 @@
     </div>
   </div>
   <div class="post-list">
-    {% for p in page.posts.toArray()%}
-      <div class="post-card">
-        <div class="post__head">
-          <a href="{{ url_for(p.path) }}" class="post-title hover-line">{{ p.title or "未命名" }}</a>
+    {% if not page.posts %}
+      DEBUG: 该子夜分类下没有文章！在指定文章头部中添加 category: {{ page.name }} 字段，即可将该文章添加至此页。
+    {% else %}
+      {% for p in page.posts.toArray()%}
+        <div class="post-card">
+          <div class="post__head">
+            <a href="{{ url_for(p.path) }}" class="post-title hover-line">{{ p.title or "未命名" }}</a>
+          </div>
+          <div class="post__body">
+            {% if p.cover %}
+              <a href="{{ url_for(p.path)}}"
+                 class="post-cover"
+                 style="background-image: url({{ url_for(p.cover)}})"></a>
+            {% endif %}
+            <div class="post-excerpt">{{ p.excerpt }}</div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">{{ partial("_partials/macros/tags.njk", {tags: p.tags}) }}</div>
+          </div>
         </div>
-        <div class="post__body">
-          {% if p.cover %}
-            <a href="{{ url_for(p.path)}}"
-               class="post-cover"
-               style="background-image: url({{ url_for(p.cover)}})"></a>
-          {% endif %}
-          <div class="post-excerpt">{{ p.excerpt }}</div>
-        </div>
-        <div class="post__foot">
-          <div class="post-tags">{{ partial("_partials/macros/tags.njk", {tags: p.tags}) }}</div>
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    {% endif %}
     {% if page.prev or page.next %}<div class="paginator">{{ paginator({prev_next: false})}}</div>{% endif %}
   </div>
 {% endblock body %}

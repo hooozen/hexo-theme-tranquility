@@ -13,10 +13,15 @@ favicon: # 配置网页图标
 subpage: # 开启“子页”功能，详见 README
   enable: false
   pages:
-    - name: # 文章的分类（category）名，如 developer
+    - name: page1 # 文章的分类（category）名，如 developer
       path: # 若不设置则默认使用 name
-      title: # 菜单名，如 开发者
-      icon: # 图标的路径
+      title: 子页一 # 菜单名，如 开发者
+      icon: /images/icon/icon-code.svg # 图标的路径
+      description: # 描述
+    - name: page2 # 文章的分类（category）名，如 developer
+      path: # 若不设置则默认使用 name
+      title: 子页二 # 菜单名，如 开发者
+      icon: /images/icon/icon-pi.svg # 图标的路径
       description: # 描述
 
 index: # 配置首页个性化内容
@@ -41,7 +46,7 @@ foot:
 
 links: # 朋友
   - name: "Theme Tranquility"
-    url: https://marie0909.github.io/
+    url: https://github.com/hooozen/hexo-theme-tranquility
 
 social: # 账号
   - name: "github"
@@ -61,6 +66,7 @@ reward: # 赞赏
   text: “请作者喝杯咖啡”
   btnText: 喜欢作者
 
+# see https://github.com/gitalk/gitalk
 gitalk: # gitalk 评论
   enable: false
   owner: # MUST HAVE, Your Github Username
@@ -77,8 +83,9 @@ gitalk: # gitalk 评论
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language: zh-CN
 
+# see https://github.com/tea3/hexo-related-popular-posts
 related_post:
-  enable: true
+  enable: false
   config:
     maxCount: 5 # Maximum count of a list. default 5
     ulClass: # Class name of element. deafult 'popular-posts'
