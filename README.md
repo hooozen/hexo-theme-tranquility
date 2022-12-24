@@ -19,7 +19,7 @@
 
 ```sh
 cd hexo
-git clone https://github.com/hooozen/hexo-theme-tranquility.git themes/next
+git clone https://github.com/hooozen/hexo-theme-tranquility.git themes/tranquility
 ```
 
 并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`。
