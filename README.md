@@ -22,9 +22,12 @@ cd hexo
 git clone https://github.com/hooozen/hexo-theme-tranquility.git themes/tranquility
 ```
 
-并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`。
+并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`（参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes)。)
 
-参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes)。
+安装必要依赖：
+```bash
+npm install hexo-pagination moment opentype.js
+```
 
 ## 设计逻辑
 
@@ -117,4 +120,4 @@ cover: https://img.shields.io/github/license/hooozen/hexo-theme-tranquility
 
 ------
 
-主题不断完善中，有问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。
+任何问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。

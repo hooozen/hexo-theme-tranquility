@@ -103,3 +103,12 @@ baidu_site_verification:
 # Baidu Analytics
 # See: https://tongji.baidu.com
 baidu_analytics: # <app_id>
+
+custom_font:
+  name: "SourceHanSerifCN"
+  extName: "ttf"
+  folder: "font/SourceHanSerifCN/"
+  subFamily:
+    - regular.ttf
+    - bold.ttf
+  targetPath: "font/"

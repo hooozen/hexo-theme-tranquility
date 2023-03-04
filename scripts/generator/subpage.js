@@ -2,7 +2,6 @@
 
 'use strict';
 
-const chalk = require('chalk');
 const pagination = require('hexo-pagination');
 
 
@@ -52,7 +51,7 @@ function subpage_generator(locals) {
     let path = page.path || page.name;
     path = path.endsWith('/') ? path : path + '/';
     if (!category || !category.length) {
-      console.warn(chalk.yellow(`Warn: There is no post in subpage '${page.title}'`));
+      console.warn(`Warn: There is no post in subpage '${page.title}'`);
       console.log(path);
       return result.concat([{
         path,
