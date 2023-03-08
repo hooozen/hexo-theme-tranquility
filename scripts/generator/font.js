@@ -59,7 +59,7 @@ function getHanText(hexo) {
     .concat(config.index.poem)
     .concat(config.foot.title)
     .join("").split("")
-    .filter(rune => /[\u4e00-\u9fa5]/.test(rune))
+    // .filter(rune => /[\u4e00-\u9fa5]/.test(rune))
   // must be sorted and .notdef at first position. see: https://github.com/opentypejs/opentype.js/issues/94
   return Array.from(new Set(text)).sort().join("")
 }
