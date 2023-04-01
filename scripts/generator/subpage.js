@@ -52,7 +52,6 @@ function subpage_generator(locals) {
     path = path.endsWith('/') ? path : path + '/';
     if (!category || !category.length) {
       console.warn(`Warn: There is no post in subpage '${page.title}'`);
-      console.log(path);
       return result.concat([{
         path,
         layout: ['category', 'archive', 'index'],

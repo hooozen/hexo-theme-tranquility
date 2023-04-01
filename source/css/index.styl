@@ -1,6 +1,22 @@
 @import '_variables';
 
 $anchor-border = $gainsboro;
+/* get timeline color config from __config.yml */
+timeline_colors = {};
+
+for item in hexo-config('timeline.items') {
+  for key in item {
+    if (key[0] == 'name') {
+      c_name = key[1];
+    }
+
+    if (key[0] == 'color') {
+      c_value = key[1];
+    }
+  }
+
+  timeline_colors[c_name] = c_value;
+}
 
 .wall-bg {
   position: absolute;
@@ -229,31 +245,31 @@ $anchor-border = $gainsboro;
   box-sizing: border-box;
 }
 
-.radio-skin--blue {
-  @extend .radio-skin;
-  border: 2px solid $blue;
-}
+for v, k in timeline_colors {
+  .radio-skin--{v} {
+    @extend .radio-skin;
+    border: 2px solid convert(k);
+  }
 
-#radio-event:checked+.radio-skin--blue {
-  background-color: $blue;
-}
+  #radio-{v}:checked+.radio-skin--{v} {
+    background-color: convert(k);
+  }
 
-.radio-skin--green {
-  @extend .radio-skin;
-  border: 2px solid $green;
-}
+  .timeline-item-{v}, .timeline-item-{v}--hidden {
+    .line-anchor::after {
+      background-color: convert(k);
+    }
 
-#radio-app:checked+.radio-skin--green {
-  background-color: $green;
-}
+    .line-date-tag {
+      background-color: convert(k);
+    }
+  }
 
-.radio-skin--yellow {
-  @extend .radio-skin;
-  border: 2px solid $orange;
-}
-
-#radio-article:checked+.radio-skin--yellow {
-  background-color: $orange;
+  /*
+  .timeline-item-app, .timeline-item-event {
+    font-weight: bold;
+  }
+  */
 }
 
 .timeline-body {
@@ -316,10 +332,6 @@ $anchor-border = $gainsboro;
   text-decoration: none;
 }
 
-.timeline-item-app, .timeline-item-event {
-  font-weight: bold;
-}
-
 .timeline-item {
   width: 100%;
   display: flex;
@@ -357,36 +369,6 @@ $anchor-border = $gainsboro;
   padding: 0;
   transform: rotateX(90deg);
   opacity: 0;
-}
-
-.timeline-item-article, .timeline-item-article--hidden {
-  .line-anchor::after {
-    background-color: $orange;
-  }
-
-  .line-date-tag {
-    background-color: $orange;
-  }
-}
-
-.timeline-item-event, .timeline-item-event--hidden {
-  .line-anchor::after {
-    background-color: $blue;
-  }
-
-  .line-date-tag {
-    background-color: $blue;
-  }
-}
-
-.timeline-item-app, .timeline-item-app--hidden {
-  .line-anchor::after {
-    background-color: $green;
-  }
-
-  .line-date-tag {
-    background-color: $green;
-  }
 }
 
 .line-anchor--now, .line-anchor--end {

@@ -112,3 +112,20 @@ custom_font:
     - regular.ttf
     - bold.ttf
   targetPath: "font/"
+
+# 配置时间线 参考 README.md
+timeline:
+  enable: true
+  items:
+    - name: article
+      color: "#ee936c"
+      icon: /images/icon/icon-article.svg
+      checked: false
+    - name: apps
+      color: "#60a465"
+      icon: /images/icon/icon-app.svg
+      checked: true
+    - name: event
+      color: "#568dc4"
+      icon: /images/icon/icon-event.svg
+      checked: false
