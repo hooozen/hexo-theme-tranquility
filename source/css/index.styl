@@ -205,6 +205,7 @@ for item in hexo-config('timeline.items') {
 .timeline-head {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .timeline-head .title {
@@ -220,9 +221,9 @@ for item in hexo-config('timeline.items') {
 
 .radio {
   position: relative;
-  height: 20px;
   width: 20px;
-  margin: 10px;
+  margin: 0 10px;
+  height: 40px;
 }
 
 .radio>label {
@@ -232,27 +233,61 @@ for item in hexo-config('timeline.items') {
   left: 0;
   bottom: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
+  height: 100%;
+  margin: auto;
 }
 
 .radio>input {
+  position: absolute;
   opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  margin: auto;
 }
 
 .radio-skin {
-  border-radius: 50%;
-  box-sizing: border-box;
+  height: 100%;
+  width: 2px;
+  border-radius: 1px;
+  background: #ccc;
+  transition: all 0.4s ease;
+
+  &::after {
+    transition: all 0.4s ease;
+    display: block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 22px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
 }
 
 for v, k in timeline_colors {
   .radio-skin--{v} {
     @extend .radio-skin;
-    border: 2px solid convert(k);
+
+    &::after {
+      background-color: #fff;
+      border-color: convert(k);
+    }
   }
 
   #radio-{v}:checked+.radio-skin--{v} {
     background-color: convert(k);
+
+    &::after {
+      background-color: convert(k);
+      top: -2px;
+    }
   }
 
   .timeline-item-{v}, .timeline-item-{v}--hidden {
