@@ -13,10 +13,12 @@
           <span class="post-date">{{ date(page.date) }}</span>
         </div>
       </div>
-      <div id="postBody" class="post-content__body">
+      <div id="postBody" class="post-content__body{{'--toc' if page.toc else ''}}">
         <div id="tocAnchor" class="toc-anchor">
           <ol id="toc" class="post-toc">
-            {{ toc(page.content, {list_number: false, max_depth: 4}) }}
+            {% if page.toc %}
+              {{ toc(page.content, {list_number: false, max_depth: 4}) }}
+            {% endif %}
           </ol>
         </div>
         {% if page.photos %}
@@ -44,5 +46,7 @@
 {% block script %}
   {% if theme.gitalk.enable %}{{ partial("_third_party/gitalk.njk")}}
   {% endif %}
-  <script type="text/javascript" src={{url_for("js/toc.js")}}></script>
+  {% if page.toc %}
+    <script type="text/javascript" src={{url_for("js/toc.js")}}></script>
+  {% endif %}
 {% endblock script %}

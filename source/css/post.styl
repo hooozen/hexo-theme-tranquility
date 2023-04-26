@@ -50,8 +50,11 @@
 }
 
 .post-content__body {
-  max-width: 700px;
   position: relative;
+
+  &--toc {
+    max-width: 700px;
+  }
 }
 
 .toc-anchor {
@@ -63,7 +66,6 @@
   width: 300px;
   text-align: left;
   margin: 0;
-  font-family: serif;
   padding-left: 30px;
   padding-top: 60px;
   display: inline-block;
@@ -99,6 +101,7 @@
 
   .toc-level {
     &-2 {
+      font-size: 15px;
       margin: 5px 0;
     }
 

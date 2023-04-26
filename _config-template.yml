@@ -115,7 +115,7 @@ custom_font:
 
 timeline:
   enable: true
-  reversed_order: true # 是否按时间倒序展示
+  order: true # 是否按时间正序展示
   items:
     - name: article
       color: "#ee936c"

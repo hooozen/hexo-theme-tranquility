@@ -7,7 +7,7 @@ module.exports = hexo => {
     if (!hexo.theme.config.timeline || !hexo.theme.config.timeline.enable) return {}
     const items = hexo.theme.config.timeline.items
     const types = items.map(item => item.name)
-    const order = hexo.theme.config.timeline.reserved_order ? '-date' : 'date'
+    const order = hexo.theme.config.timeline.order ? 'date' : '-date'
     return {
       types,
       posts: hexo.locals.get('posts').sort(order)

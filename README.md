@@ -125,16 +125,21 @@ timeline: article  # 展示在列表中
 ---
 ```
 
+有关时间线的配置修改**可能需要重新启动服务**才会生效
+
 **!注意，这对 `v1.1.1` 版本及之前的用户是一个有副作用的更新，请将之前的 `type` 字段修改为 `timeline` 字段，并配置 `_config.ym` 文件！**
 
 ### 其他
 
-文章列表封面图片的配置，通过设置文章头部信息的 `cover` 字段配置，例如:
+* 文章列表封面图片的配置，通过设置文章头部信息的 `cover` 字段配置
+
+* 文章页是否展示目录，通过设置文章头部信息的 `toc` 字段配置，默认不展示目录。当展示目录时，页面展示文字的最大宽度会变小。
 
 ```yml
 ---
 title: 题目
 cover: https://img.shields.io/github/license/hooozen/hexo-theme-tranquility
+toc: true
 ...
 ---
 ```
