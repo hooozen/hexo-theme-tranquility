@@ -116,7 +116,7 @@ custom_font:
 # 配置时间线 参考 README.md
 timeline:
   enable: true
-  reversed_order: false # 是否按时间倒序展示
+  reversed_order: true # 是否按时间倒序展示
   items:
     - name: article
       color: "#ee936c"
