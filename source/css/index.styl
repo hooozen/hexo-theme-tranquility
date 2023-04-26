@@ -261,13 +261,14 @@ for item in hexo-config('timeline.items') {
     height: 20px;
     width: 20px;
     border-radius: 50%;
+    background-color: #fafafa;
     border: 2px solid transparent;
     box-sizing: border-box;
     content: '';
     position: absolute;
     left: -9px;
     top: 22px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -276,7 +277,6 @@ for v, k in timeline_colors {
     @extend .radio-skin;
 
     &::after {
-      background-color: #fff;
       border-color: convert(k);
     }
   }
@@ -376,6 +376,7 @@ for v, k in timeline_colors {
   font-size: 18px;
   overflow: hidden;
   transition: all 200ms ease-out;
+  transition-delay: 200ms;
   height: 80px;
 
   &-first, &-last {
