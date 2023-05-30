@@ -58,9 +58,8 @@ function getSubText(hexo) {
     .concat(config.index.about.text)
     .concat(config.index.poem)
     .concat(config.foot.title)
-    .join("").split("")
+    .join("").split("").concat([" "])
   text = handleAscii(Array.from(new Set(text)))
-  text.push(" ")
 
   // .filter(rune => /[\u4e00-\u9fa5]/.test(rune))
   // must be sorted and .notdef at first position. see: https://github.com/opentypejs/opentype.js/issues/94
