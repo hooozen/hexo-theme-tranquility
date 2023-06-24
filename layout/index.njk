@@ -83,7 +83,7 @@
 {% endblock body %}
 {% block script %}
   {% include "_partials/scripts/HeartCurve.njk" %}
-  {% from "_partials/scripts/TimeLine.njk" import timeline %}
+  {% from "_partials/scripts/Timeline.njk" import timeline %}
   {% if theme.timeline and theme.timeline.enable %}
     {{ timeline(site.timelineData)}}
   {% endif %}
