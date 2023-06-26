@@ -5,7 +5,7 @@
 {% endblock link %}
 {% block body %}
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner{{'--toc' if page.toc else ''}}">
       <div class="post-content__head">
         <div class="post-title">{{ page.title or "未命名" }}</div>
         <div class="post-info">
@@ -13,14 +13,16 @@
           <span class="post-date">{{ date(page.date) }}</span>
         </div>
       </div>
-      <div id="postBody" class="post-content__body{{'--toc' if page.toc else ''}}">
-        <div id="tocAnchor" class="toc-anchor">
-          <ol id="toc" class="post-toc">
-            {% if page.toc %}
-              {{ toc(page.content, {list_number: false, max_depth: 4}) }}
-            {% endif %}
-          </ol>
-        </div>
+      <aside class="toc-outer">
+        <ol class="post-toc">
+          {% if page.toc %}
+            <div class="toc-title">目录</div>
+            {{ toc(page.content, {list_number: false, max_depth: 4}) }}
+            <a href="{{page.link}}#" class="toc-top">回到顶部</a>
+          {% endif %}
+        </ol>
+      </aside>
+      <div class="post-content__body">
         {% if page.photos %}
           <div class="post-gallery">
             {% for photo in page.photos %}<img width="auto" height="auto" alt="cover" src="{{ photo }}"/>{% endfor %}
@@ -28,6 +30,7 @@
         {% endif %}
         {{ page.content }}
       </div>
+
     </div>
   </article>
   <div class="post__foot">
@@ -45,8 +48,5 @@
 {% endblock body %}
 {% block script %}
   {% if theme.gitalk.enable %}{{ partial("_third_party/gitalk.njk")}}
-  {% endif %}
-  {% if page.toc %}
-    <script type="text/javascript" src={{url_for("js/toc.js")}}></script>
   {% endif %}
 {% endblock script %}
