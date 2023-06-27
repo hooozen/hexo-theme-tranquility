@@ -67,9 +67,10 @@
   top: 60px;
   float: right;
   margin-right: -230px;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 250px);
+  padding-left: 30px;
   overflow-y: auto;
-  width: 230px;
+  width: 200px;
   color: $black-lighter;
 
   .toc-title, .toc-top {
@@ -77,22 +78,13 @@
     padding: 8px 0;
     color: $text-color;
     font-size: $font-size-small;
+    height: 30px;
+    line-height: 30px;
   }
 
   .toc-title {
     border-top: 2px solid $white-blue;
   }
-}
-
-.post-toc {
-  width: 100%;
-  text-align: left;
-  margin: 0;
-  padding-left: 30px;
-  display: inline-block;
-  text-align: left;
-  box-sizing: border-box;
-  line-height: 1.25em;
 
   a {
     text-decoration: none;
@@ -104,28 +96,30 @@
     padding: 0;
   }
 
-  &--attached {
-    @extend .post-toc;
-    position: fixed;
-  }
-
-  &--bottom {
-    @extend .post-toc;
-  }
-
   .toc-number {
     font-size: 80%;
   }
 
-  .toc-level {
-    &-2 {
-      font-size: 15px;
-      margin: 5px 0;
-    }
+  .post-toc {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+    box-sizing: border-box;
+    line-height: 1.25em;
 
-    &-3 {
-      font-size: 14px;
-      padding-left: 10px;
+    &-level {
+      &-2 {
+        font-size: 15px;
+        margin: 5px 0;
+      }
+
+      &-3 {
+        font-size: 14px;
+        padding-left: 10px;
+      }
     }
   }
 }

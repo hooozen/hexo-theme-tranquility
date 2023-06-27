@@ -141,7 +141,7 @@ mathjax: false # 加载 LateX 数学公式库
 
 ```bash
 npm uninstall hexo-renderer-marked
-npm uninstall hexo-renderer-pandoc
+npm install hexo-renderer-pandoc
 ```
 
 `hexo-renderer-pandoc` 插件可能需要你安装 pandoc 软件，查看 [pandoc.org](https://www.pandoc.org/)。

@@ -13,15 +13,13 @@
           <span class="post-date">{{ date(page.date) }}</span>
         </div>
       </div>
-      <aside class="toc-outer">
-        <ol class="post-toc">
-          {% if page.toc %}
-            <div class="toc-title">目录</div>
-            {{ toc(page.content, {list_number: false, max_depth: 4}) }}
-            <a href="{{page.link}}#" class="toc-top">回到顶部</a>
-          {% endif %}
-        </ol>
-      </aside>
+      {% if page.toc %}
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          {{ toc(page.content, {list_number: false, max_depth: 4, class: 'post-toc'}) }}
+          <a href="{{page.link}}#" class="toc-top">回到顶部</a>
+        </aside>
+      {% endif %}
       <div class="post-content__body">
         {% if page.photos %}
           <div class="post-gallery">
