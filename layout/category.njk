@@ -52,7 +52,7 @@
   </div>
   <div class="post-list">
     {% if not page.posts %}
-      DEBUG: 该子夜分类下没有文章！在指定文章头部中添加 category: {{ page.name }} 字段，即可将该文章添加至此页。
+      DEBUG: 该子页分类下没有文章！在指定文章头部中添加 category: {{ page.name }} 字段，即可将该文章添加至此页。
     {% else %}
       {% for p in page.posts.toArray()%}
         <div class="post-card">

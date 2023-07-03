@@ -155,8 +155,8 @@
       </div>
     </div>
     {% if theme.mathjax %}
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="https://unpkg.com/js-polyfills@0.1.43/es6.js"></script>
+      <script id="MathJax-script" async src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
     {% endif %}
     {% block script %}
     {% endblock script %}
