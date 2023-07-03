@@ -1,6 +1,8 @@
 {% extends "_partials/layout.njk" %}
 {% block link %}
-  <link rel="stylesheet" type="text/css" href="/css/category.css" />
+  <link rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('/css/category.css')}}"/>
 {% endblock link %}
 {% block body %}
   <div class="tag-page-title">#{{ page.tag }}</div>

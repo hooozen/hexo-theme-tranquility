@@ -1,0 +1,9 @@
+{% for subfont in theme.zh_font.style %}
+  <style>
+    @font-face {
+        font-family:{{ theme.zh_font.fontName }};
+        src: url({{ url_for('/font/') + subfont + '.' + theme.zh_font.type }});
+        font-weight: {{ subfont }};
+    }
+  </style>
+{% endfor %}

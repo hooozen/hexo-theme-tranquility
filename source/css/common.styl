@@ -1,6 +1,6 @@
 @import '_variables';
 @import 'normal';
-@import 'highlight'; /* layout */
+@import '_highlight'; /* layout */
 
 .wall {
   user-select: none;
@@ -219,7 +219,7 @@ mjx-container {
 .matts {
   cursor: default;
   display: inline-flex;
-  background: url('/images/matts.svg') center center / contain no-repeat;
+  background: url(url_for('/images/matts.svg')) center center / contain no-repeat;
   align-items: center;
   padding: 8px;
   transition: opacity 200ms ease-out;
