@@ -61,9 +61,10 @@
 
 2. 并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`（参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes))。
 
-3. 安装依赖:
+3. 移除冲突的依赖，并安装必要依赖:
 
     ```bash
+    npm uninstall hexo-generator-category hexo-generator-archive
     npm install hexo-pagination moment opentype.js
     ```
 
@@ -85,7 +86,7 @@
 
 ## 设计逻辑
 
-本主题改变了 Hexo 的默认设计逻辑，所以与大多数的 Hexo 主题的用法不同，请参考下文.  
+本主题改变了 Hexo 的默认设计逻辑，所以与大多数的 Hexo 主题的用法不同，请参考下文。
 
 大多数的 Hexo 主题的设计目的是在于**纯粹的博客记录**，并且博主的博客内容往往集中于单一学科领域（如互联网技术）。因此在这个需求驱动下，大多数 Hexo 主题被设计为主页展示文章列表，并使用繁多的分类（Category）为文章进行细分。这种设计很好的满足了需求。
 
@@ -97,9 +98,7 @@
 
 引入“子页”的概念来取代“分类”（Category），所有的子页都在导航栏具有一级入口。基于此，子页的概念应该更广，往往为某一个学科大类或者领域，例如所有的互联网技术博文应该被划分为一个“子页”中，不管它属于“前端技术”还是“服务端技术”。
 
-对于同属一个“子页”的文章，借鉴了微信公众号的分类逻辑，使用标签（Tag）来对文章进行分类和聚合。因此主题中（几乎<sup>注</sup>）没有了默认的 Category 的概念和入口，取而代之的是“子页”（Subpage）与“标签”（Tag）的概念。  
-
-（*注：虽然“子页”的概念取代了“分类”，但底层的实现仍然是基于分类的。并且分类的显式入口虽然被取消，但仍然可以通过 URL 进行访问。之所以这么做是出于兼容性考虑，但强烈推荐用户放弃“分类”的管理方法，因为这样可能会造成一些文章没有显式入口*）
+对于同属一个“子页”的文章，借鉴了微信公众号的分类逻辑，使用标签（Tag）来对文章进行分类和聚合。因此主题中**没有了**默认的 Category 的概念和入口，取而代之的是“子页”（Subpage）与“标签”（Tag）的概念。  
 
 有关该主题的设计理念，如果这里的描述不够清楚，打开[演示站](https://www.hozen.site)浏览一下应该就明白了。如果无法理解这种改变，可能是因为您并没有这种需求，使用其他 Hexo 主题可能会是更好的选择。
 
@@ -107,7 +106,7 @@
 
 经过[安装](#安装)步骤，你在博客根目录下已经有了一个 `_config.tranquility.yml` 文件。如没有，请阅读并检查[安装步骤](#安装)。如不加说明，该部分的配置均在博客更目录下的 `_config.tranquility.yml` 文件进行。
 
-本章所有的配置内容你都可以在 [致远](https://theme.www.hozen.site/tranquility/) 网站找到对应的测试文章，并在 [hooozen/hexo-theme-test](https://github.com/hooozen/hexo-theme-test) 仓库中找到对应的配置文件。所以当哪个配置项文档读不懂时不妨去找一下对应的例子。
+本章所有的配置内容你都可以在 [致远](https://theme.www.hozen.site/tranquility/) 网站找到对应的测试文章，并在 [hooozen/hexo-theme-test](https://github.com/hooozen/hexo-theme-test) 仓库中找到对应的配置文件。所以当哪个配置项说明读不懂时不妨去找一下对应的例子。
 
 ### 子页
 
@@ -117,7 +116,7 @@
 subpage: # 开启“子页”功能，详见 README
   enable: true  # 是否开启子页功能
   pages:  # 子页数组
-    - name: # 文章的分类（category）名，如 developer
+    - name: # 子页标识，如 developer
       path: # 若不设置则默认使用 name
       title: # 显式在导航栏的菜单名，如 开发者
       icon: # 图标的路径
@@ -134,7 +133,7 @@ subpage: # 开启“子页”功能，详见 README
 
 ### 时间线
 
-时间线的设计初衷是为了展示博主的**重要**事件或履历，如出生、毕业、结婚、失业等。
+时间线的设计初衷是为了展示博主的**重要**事件或履历，如荣誉、宿醉、死亡等[<sup>[1]</sup>](#ref1)。
 
 你也可以用它来展示精选文章或其他内容，时间线支持自定义配置。
 
@@ -237,8 +236,8 @@ mathjax: true # 加载 LateX 数学公式库
 
 标签云出现在每个子页的首页，用来展示该子页下文章的标签分布。标签云有两种形式：3D 动画云和静态标签云。
 
-- `tagcloud` 配置标签云
 - `tagcloud.fancy` 选择是否开启 3D 动画云
+- `tagcloud` 的其他选项用以配置 3D 标签云，参考 [tagcloud](https://hexo.io/zh-cn/docs/helpers#tagcloud)
 
 ### 文章封面
 
@@ -272,7 +271,7 @@ mathjax: true # 加载 LateX 数学公式库
 
 主题的部分区域为了设计感使用了第三方的汉字字体。但由于汉字字体包太大，因此本主题对用户使用的部分字体进行了提取打包成子字体。
 
-通过 `zh_font` 配置项进行配置
+通过 `zh_font` 配置项进行开启或关闭
 
 ### 其他
 
@@ -282,6 +281,7 @@ mathjax: true # 加载 LateX 数学公式库
 - 百度 SEO
 - 等
 
-------
+-----
 
-任何问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。欢迎更新文档！
+<div id='ref1'></div>
+[1]. 引用了英雄联盟角色亚索的台词：“生命中有三件必经之事，荣誉、死亡，还有……宿醉……” 😜
