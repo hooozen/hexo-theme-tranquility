@@ -61,15 +61,14 @@
 
 2. 并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`（参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes))。
 
-3. 准备依赖:
+3. 安装依赖:
 
     ```bash
-    npm uninstall hexo-generator-index hexo-renderer-ejs hexo-renderer-marked
     npm install hexo-pagination moment opentype.js
     ```
 
 4. 主题配置
-    将主题目录下的配置文件 `themes/tranquility/_config.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
+    将主题目录下的配置文件 `themes/tranquility/_config.yml` **移动**到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
 
 ## 升级
 
