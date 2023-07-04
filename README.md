@@ -13,7 +13,7 @@
 
 演示站：
 
-- [致远](https://theme.www.hozen.site/tranquility/)
+- [致远](https://theme.hozen.site/tranquility/)
 - [浩然的主页](https://www.hozen.site)
 
 ## 特点
