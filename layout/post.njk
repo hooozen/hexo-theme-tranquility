@@ -1,13 +1,11 @@
 {% extends "_partials/layout.njk" %}
 {% block link %}
-  <link rel="stylesheet"
-        type="text/css"
-        href="{{ url_for("/css/post.css") }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for("/css/post.css") }}" />
   {% if theme.gitalk.enable %}<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />{% endif %}
 {% endblock link %}
 {% block body %}
   <article class="post-content">
-    <div class="post-inner{{'--toc' if page.toc else '' }}">
+    <div class="post-inner{{ '--toc' if page.toc else '' }}">
       <div class="post-content__head">
         <div class="post-title">{{ page.title or "未命名" }}</div>
         <div class="post-info">

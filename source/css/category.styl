@@ -1,5 +1,39 @@
 @import '_variables.styl';
 
+.wall-category--plain {
+  height: auto;
+  width: auto;
+  display: block;
+  max-width: 900px;
+  padding: 0 20px;
+  margin: 20px auto;
+
+  .wall-category-title {
+    align-items: center;
+    justify-content: flex-start;
+    font-size: $font-size-title;
+    font-weight: bold;
+
+    .title-icon {
+      height: ($font-size-title / 1.5);
+      width: ($font-size-title / 1.5);
+      margin-right: 10px;
+    }
+  }
+
+  .wall-category-description {
+    text-align: left;
+  }
+
+  #tags-outer a {
+    text-decoration: none;
+    color: #2c5fa5;
+    display: inline-block;
+    margin-right: 8px;
+    transition: color 200ms ease-out;
+  }
+}
+
 .wall-category-title {
   display: flex;
   align-items: center;
@@ -130,17 +164,19 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .tag-page-title {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+  .wall-category {
+    .tag-page-title {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
 
-  .post-list {
-    padding: 0 10px;
-  }
+    .post-list {
+      padding: 0 10px;
+    }
 
-  #tags-outer {
-    padding-top: 30px;
+    #tags-outer {
+      padding-top: 30px;
+    }
   }
 }
 

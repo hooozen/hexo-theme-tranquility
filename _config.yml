@@ -131,3 +131,9 @@ timeline:
       color: "#568dc4"
       icon: /images/icon/icon-event.svg
       checked: true
+
+# 标签云
+tagcloud:
+  fancy: false
+  min_font: 14
+  max_font: 30
