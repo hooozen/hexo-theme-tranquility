@@ -68,7 +68,7 @@
     ```
 
 4. 主题配置
-    将主题目录下的配置文件 `themes/tranquility/_config.yml` **移动**到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
+    将主题目录下的配置文件 `themes/tranquility/_config-template.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
 
 ## 升级
 
@@ -81,7 +81,7 @@
     git pull
     ```
 
-- 阅读[更新说明](https://github.com/hooozen/hexo-theme-tranquility/releases)，并查看 `themes/tranquility/_config.yml` 的新增和修改项，对应修改你的 `_theme.tranuility.yml` 文件
+- 阅读[更新说明](https://github.com/hooozen/hexo-theme-tranquility/releases)，并查看 `themes/tranquility/_config-template.yml` 的新增和修改项，对应修改你的 `_theme.tranuility.yml` 文件
 
 ## 设计逻辑
 
@@ -105,7 +105,7 @@
 
 ## 配置
 
-经过[安装](#安装)步骤，你在博客根目录下已经有了一个 `_config.tranquility.yml` 文件。如没有，请阅读并检查[安装步骤](#安装)。如不加说明，该部分的配置均在博客更目录下的 `_config.tranquility.yml` 文件进行。之所以不直接修改主题文件夹下的 `_config.yml` 文件，是为了更加方便的对主题进行[升级](#升级)。
+经过[安装](#安装)步骤，你在博客根目录下已经有了一个 `_config.tranquility.yml` 文件。如没有，请阅读并检查[安装步骤](#安装)。如不加说明，该部分的配置均在博客更目录下的 `_config.tranquility.yml` 文件进行。
 
 本章所有的配置内容你都可以在 [致远](https://theme.www.hozen.site/tranquility/) 网站找到对应的测试文章，并在 [hooozen/hexo-theme-test](https://github.com/hooozen/hexo-theme-test) 仓库中找到对应的配置文件。所以当哪个配置项文档读不懂时不妨去找一下对应的例子。
 
