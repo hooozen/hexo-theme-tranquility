@@ -1,102 +1,154 @@
 
 <h1> <div align="center"><img align="center" height="40" src="source/images/tranquility.svg"/> 致远</div></h1>
 
-<p align="center">致远是一款 Hexo 主题，专门为个人主页及多学科领域博主设计。</p>
+<p align="center">致远是一款 Hexo 主题，专门为个人主页及多学科领域博主设计</p>
 
 <p align="center">
 <a href="https://github.com/hooozen/hexo-theme-tranquility/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/hooozen/hexo-theme-tranquility?label=release&color=orange"></a>
 <a href="https://hexo.io/"><img src="https://img.shields.io/badge/Hexo-%3E%3D6.3.0-blue?logo=hexo"></a>
 <a href="https://github.com/hooozen/hexo-theme-tranquility/blob/main/LICENSE"><img src="https://img.shields.io/github/license/hooozen/hexo-theme-tranquility"></a>
 
-<img src="./doc/images/index.png"/>
+<img src="./doc/images/index-ios-3.jpg"/>
 </p>
 
-演示站：[浩然的主页](https://www.hozen.site)
+演示站：
+
+- [致远](https://theme.www.hozen.site/tranquility/)
+- [浩然的主页](https://www.hozen.site)
 
 ## 特点
 
-* 主页风格，聚焦个性展示
-* “子页”设计，适应多领域写作
-* 自定义字体及提取压缩，兼具美观和性能
-* 时间线、相关文章、数学公式、Gitalk 评论、赞赏
-* 等
+- 主页风格，聚焦个性展示
+- [“子页”设计](#子页)，适应多领域写作
+- 三端自适应，舒适阅读
+- 自定义字体及提取压缩，兼具美观和性能
+- [时间线](#时间线)、[相关文章](#相关文章)、[数学公式](#数学公式)、[Gitalk 评论](#其他)、[赞赏](#文章赞赏)、[SEO](#其他)
+- 等
+
+ -----
+
+## 目录
+
+- [安装](#安装)
+- [升级](#升级)
+- [设计逻辑](#设计逻辑)
+  - [改变](#改变)
+- [配置](#配置)
+  - [子页](#子页)
+  - [首页自定义](#首页自定义)
+  - [页脚自定义](#页脚自定义)
+  - [时间线](#时间线)
+  - [数学公式](#数学公式)
+  - [代码高亮](#代码高亮)
+  - [标签云](#标签云)
+  - [文章封面](#文章封面)
+  - [文章置顶](#文章置顶)
+  - [文章置顶](#文章置顶)
+  - [文章赞赏](#文章赞赏)
+  - [相关文章](#相关文章)
+  - [其他](#其他)
 
 ## 安装
 
-下载本仓库的文件到你的 Hexo 目录的 `themes\tranquility` 文件夹下：
+0. 前置条件：[node(>=16)](https://nodejs.org/en)、[Git](https://git-scm.com/)、[Hexo](https://hexo.io/) 以及使用 Hexo 博客文件。如果你还不了解以上内容，请从[这里](https://hexo.io/zh-cn/docs/)获取相关帮助。
 
-```sh
-cd hexo
-git clone https://github.com/hooozen/hexo-theme-tranquility.git themes/tranquility
-```
+1. 下载本仓库的文件到你的 Hexo 目录的 `themes\tranquility` 文件夹下:
 
-并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`（参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes)。)
+    ```sh
+    cd hexo
+    git clone https://github.com/hooozen/hexo-theme-tranquility.git themes/tranquility
+    ```
 
-*安装必要依赖*：
+2. 并配置根目录下 `_config.yml` 中的 `theme` 字段为 `tranquility`（参考 [主题 | Hexo](https://hexo.io/zh-cn/docs/themes))。
 
-```bash
-npm install hexo-pagination moment opentype.js
-```
+3. 准备依赖:
+
+    ```bash
+    npm uninstall hexo-generator-index hexo-renderer-ejs hexo-renderer-marked
+    npm install hexo-pagination moment opentype.js
+    ```
+
+4. 主题配置
+    将主题目录下的配置文件 `themes/tranquility/_config.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
+
+## 升级
+
+本主题在不停迭代，当使用过程中遇到问题时可以查看主题是否已经有了更新。主题升级的步骤如下：
+
+- 进入主题目录拉取更新
+
+    ```bash
+    cd themes/tranquility
+    git pull
+    ```
+
+- 阅读[更新说明](https://github.com/hooozen/hexo-theme-tranquility/releases)，并查看 `themes/tranquility/_config.yml` 的新增和修改项，对应修改你的 `_theme.tranuility.yml` 文件
 
 ## 设计逻辑
 
-本主题改变了 Hexo 的默认设计逻辑，所以与大多数的 Hexo 主题的用法不同，请参考下文。
+本主题改变了 Hexo 的默认设计逻辑，所以与大多数的 Hexo 主题的用法不同，请参考下文.  
 
 大多数的 Hexo 主题的设计目的是在于**纯粹的博客记录**，并且博主的博客内容往往集中于单一学科领域（如互联网技术）。因此在这个需求驱动下，大多数 Hexo 主题被设计为主页展示文章列表，并使用繁多的分类（Category）为文章进行细分。这种设计很好的满足了需求。
 
-当用户需要一个能够展示个人特点的主页，并且需要对博客的内容进行**明确**的领域划分时，这些主题并不能很好的满足这些需求。因此“致远”主题被设计出来，也被规定了目标群体。
+当用户需要一个能够展示个人特点的主页，并且需要对博客的内容进行**明确**的领域划分时，这些主题并不能很好的满足这些需求。因此“致远”主题被设计出来，同时也规定了用户群体。
 
 ### 改变
 
-主页并不展示文章列表，而是展示具有个人特点的内容，如“关于”和“时间线”功能。
+主页并不展示文章列表，而是展示具有个人特点的内容，如“关于”和“时间线”模块。
 
 引入“子页”的概念来取代“分类”（Category），所有的子页都在导航栏具有一级入口。基于此，子页的概念应该更广，往往为某一个学科大类或者领域，例如所有的互联网技术博文应该被划分为一个“子页”中，不管它属于“前端技术”还是“服务端技术”。
 
 对于同属一个“子页”的文章，借鉴了微信公众号的分类逻辑，使用标签（Tag）来对文章进行分类和聚合。因此主题中（几乎<sup>注</sup>）没有了默认的 Category 的概念和入口，取而代之的是“子页”（Subpage）与“标签”（Tag）的概念。  
 
-（*注：虽然“子页”的概念取代了“分类”，但底层的实现仍然是基于分类的。并且分类的入口虽然被取消，但仍然可以通过 URL 进行访问。之所以这么做是出于兼容性考虑，但不推荐用户使用时仍采用“分类”的概念去部署文章。*）
+（*注：虽然“子页”的概念取代了“分类”，但底层的实现仍然是基于分类的。并且分类的显式入口虽然被取消，但仍然可以通过 URL 进行访问。之所以这么做是出于兼容性考虑，但强烈推荐用户放弃“分类”的管理方法，因为这样可能会造成一些文章没有显式入口*）
 
-有关该主题的设计理念，如果这里的描述不够清楚，打开[演示站](https://www.hozen.site)浏览一下应该就明白了。如果仍无法理解，可能是因为你并没有这种需求。
+有关该主题的设计理念，如果这里的描述不够清楚，打开[演示站](https://www.hozen.site)浏览一下应该就明白了。如果无法理解这种改变，可能是因为您并没有这种需求，使用其他 Hexo 主题可能会是更好的选择。
 
-## 主题配置
+## 配置
 
-主题目录中的默认配置是兼容 Hexo 的默认设计的。如果想要发挥该主题的设计初衷，需要开启“子页”配置。
+经过[安装](#安装)步骤，你在博客根目录下已经有了一个 `_config.tranquility.yml` 文件。如没有，请阅读并检查[安装步骤](#安装)。如不加说明，该部分的配置均在博客更目录下的 `_config.tranquility.yml` 文件进行。之所以不直接修改主题文件夹下的 `_config.yml` 文件，是为了更加方便的对主题进行[升级](#升级)。
 
-### 子页功能 subpage
+本章所有的配置内容你都可以在 [致远](https://theme.www.hozen.site/tranquility/) 网站找到对应的测试文章，并在 [hooozen/hexo-theme-test](https://github.com/hooozen/hexo-theme-test) 仓库中找到对应的配置文件。所以当哪个配置项文档读不懂时不妨去找一下对应的例子。
 
-配置主题目录下的 `_config.yml` 文件，开启 `subpage` 功能:
+### 子页
+
+子页的配置在 `subpage` 下进行：
 
 ```yml
 subpage: # 开启“子页”功能，详见 README
-  enable: true 
-  pages:
+  enable: true  # 是否开启子页功能
+  pages:  # 子页数组
     - name: # 文章的分类（category）名，如 developer
       path: # 若不设置则默认使用 name
-      title: # 菜单名，如 开发者
+      title: # 显式在导航栏的菜单名，如 开发者
       icon: # 图标的路径
       description: # 描述
 ```
 
 若关闭子页功能（`enbale: false`），则导航栏只会有一个“博客”按钮，点击该按钮就会进入所有文章列表。
 
-若开启子页功能（`enbale: true`），则必须配置 `pages` 数组。该数组中的 `name` 字段即为要被设置为子页的**文章分类名**。`path` 指定子页的路径，默认使用 `name`。该数组的 `title` 会展示在导航栏的菜单中。配置完毕后，`pages` 数组中的所有项都会以 `title` 为名展示在网页的头部导航栏，点击每一项进入相应的子页。
+若开启子页功能（`enbale: true`），则必须配置 `pages` 数组。该数组中使用 `name` 标识子页。`path` 指定子页的路径，默认使用 `name`。该数组的 `title` 会展示在导航栏的菜单中。配置完毕后，`pages` 数组中的所有项都会以 `title` 为名展示在网页的头部导航栏，点击每一项进入相应的子页。`icon` 和 `description` 用于配置子页中的图标和表述。
 
-“子页”实际上就是原来的“分类页”，在该页下会展示属于该分类（`name`字段）的文章列表。`icon` 和 `description` 用于配置子页中的图标和表述。
+例如，[致远](https://theme.hozen.site/tranquility/)所使用的[子页配置](https://github.com/hooozen/hexo-theme-test/blob/main/_config.tranquility.yml#L13)。
+
+新建文章后，只需要把文章头部的 `category` 字段设置为某子页的 `name` 即可将该文章划分到该子页下。
 
 ### 时间线
 
-时间线用以展示博主重要的事件或精选文章:
+时间线的设计初衷是为了展示博主的**重要**事件或履历，如出生、毕业、结婚、失业等。
+
+你也可以用它来展示精选文章或其他内容，时间线支持自定义配置。
 
 ![timeline](doc/images/timeline.gif)
 
-首先在主题配置文件 `_config.yml` 中配置时间线的分类，例如：
+时间线的配置在 `timeline` 下进行
 
 ```yml
 timeline:
   enable: true  # 是否开启时间线
   reversed_order: true # 是否按时间倒序展示
   items:  # 配置时间线分类
-    - name: article  # 分类名称呢钆
+    - name: article  # 分类名称
       color: "#ee936c"  # 分类主题色
       icon: /images/icon/icon-article.svg  # 分类图标
       checked: false  # 是否默认展示
@@ -110,7 +162,7 @@ timeline:
       checked: false
 ```
 
-在文章中配置 `timeline` 字段并指定时间线分类后，改文章会展示在时间线列表中，例如：
+在文章中配置 `timeline` 字段并指定时间线分类名称后，该文章会展示在时间线列表中，例如：
 
 ```yml
 ---
@@ -118,60 +170,119 @@ id: 57
 title: 多少冬天
 date: 2022-11-30 23:23:48
 tags: 
-- 散文
-categories: life
+  - 散文
+categories: life  # 属于 life 子类下
 cover: /assets/images/57-1.jpg
-timeline: article  # 展示在列表中
+timeline: article  # 展示在时间线列表中
 ---
 ```
 
 有关时间线的配置修改**可能需要重新启动服务**才会生效
 
-**!注意，这对 `v1.1.1` 版本及之前的用户是一个有副作用的更新，请将之前的 `type` 字段修改为 `timeline` 字段，并配置 `_config.ym` 文件！**
+### 代码高亮
+
+代码高亮依赖于博客**根目录**下的 `_config.yml` 的`highlight` 配置，请配置如下：
+
+```yml
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ""
+  wrap: true
+  hljs: true
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ""
+
+```
 
 ### 数学公式
 
-主题支持 Latex 语法的数学公式，需要在主题配置文件中开启:
+主题有两种方式开启对 Latex 数学公式的支持，但都需要先进行以下操作：
+
+- **移除** Hexo 默认的 markdown 渲染插件 `hexo-renderer-marked`，并安装 `hexo-renderer-pandoc`。如果安装了其他的 markdown 渲染插件也请移除！
+
+  ```bash
+  npm uninstall hexo-renderer-marked
+  npm install hexo-renderer-pandoc
+  ```
+
+- 安装 pandoc 软件，查看 [pandoc.org](https://www.pandoc.org/)。
+
+第一种方法，使用主题预置的 Latex 解析，直接在配置文件中开启 `mathjax` 即可使用
 
 ```yml
-mathjax: false # 加载 LateX 数学公式库
+mathjax: true # 加载 LateX 数学公式库
 ```
 
-另外需要**移除** Hexo 默认的 markdown 渲染插件 `hexo-renderer-marked`，并安装 `hexo-renderer-pandoc`。如果安装了其他的 markdown 渲染插件也请移除！
+第二种方法，使用第三方插件 [hexo-filter-mathjax](https://github.com/next-theme/hexo-filter-mathjax) 进行服务端渲染。并关闭配置文件中的 `mathjax: false`
 
-```bash
-npm uninstall hexo-renderer-marked
-npm install hexo-renderer-pandoc
-```
+从访问性能来讲，推荐使用第二种方法。
 
-`hexo-renderer-pandoc` 插件可能需要你安装 pandoc 软件，查看 [pandoc.org](https://www.pandoc.org/)。
+### 首页自定义
+
+- 查看 `index` 配置项
+
+### 页脚自定义
+
+- `foot.title` 配置页脚显式的标语
+
+- `links` 配置友链
+
+- `social` 配置社交帐户或其他链接
+
+### 标签云
+
+标签云出现在每个子页的首页，用来展示该子页下文章的标签分布。标签云有两种形式：3D 动画云和静态标签云。
+
+- `tagcloud` 配置标签云
+- `tagcloud.fancy` 选择是否开启 3D 动画云
+
+### 文章封面
+
+- 文章列表封面图片的配置，通过设置文章头部的 `cover` 字段指定封面图片的 URL
+
+### 文章目录
+
+- 通过在文章头部配置 `toc: true` 来展示文章目录。具有较多层级结构的文章推荐开启，而散文等文本类可以关闭。
+
+### 文章置顶
+
+- 通过数字来指定文章头部的 `sticky` 属性对文章进行置顶，数字越大置顶优先级越高。数字都需要大于 `0`。
+
+### 文章赞赏
+
+- 配置项 `reward` 进行文章赞赏配置，包括头像、二维码和语句等。
+
+### 相关文章
+
+相关文章用来在每篇文章底部展示与本篇文章相关的推荐文章。
+
+- 首先安装依赖
+
+    ```bash
+    npm install hexo-related-popular-posts
+    ```
+
+- 通过 `related_post` 配置项进行配置，具体配置查看[插件文档](https://github.com/tea3/hexo-related-popular-posts)。
+
+### 自定义字体
+
+主题的部分区域为了设计感使用了第三方的汉字字体。但由于汉字字体包太大，因此本主题对用户使用的部分字体进行了提取打包成子字体。
+
+通过 `zh_font` 配置项进行配置
 
 ### 其他
 
-* 文章列表封面图片的配置，通过设置文章头部信息的 `cover` 字段配置
+请他配置请查看配置文件注释
 
-* 文章页是否展示目录，通过设置文章头部信息的 `toc` 字段配置，默认不展示目录。当展示目录时，页面展示文字的最大宽度会变小。
-
-```yml
----
-title: 题目
-cover: https://img.shields.io/github/license/hooozen/hexo-theme-tranquility
-toc: true
-...
----
-```
-
-其他配置参考主题目录下 `_config.yml` 的注释，包括：
-
-* 数学公式的支持 （依赖 `hexo-renderer-pandoc` 和 pandoc）
-* 首页内容配置
-* 友链和社交媒体
-* 相关文章（依赖 `hexo-related-popular-posts`）
-* 文章赞赏
-* gitalk 文章评论
-* 百度 SEO
-* 等
+- gitalk 文章评论
+- 百度 SEO
+- 等
 
 ------
 
-任何问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。
+任何问题和意见请指出：[Issues](https://github.com/hooozen/hexo-theme-tranquility/issues)。欢迎更新文档！
