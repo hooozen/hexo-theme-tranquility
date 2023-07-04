@@ -1,0 +1,20 @@
+{% for p in posts.toArray() %}
+  {% set sticky = p.sticky %}
+  <div class="post-card{{ '--sticky' if sticky else '' }}">
+    <div class="post__head">
+      <a href="{{ url_for(p.path) }}" class="post-title hover-line">{{ p.title or "未命名" }}</a>
+      {% if p.sticky %}<span class="post-title-pined">置顶</span>{% endif %}
+    </div>
+    <div class="post__body">
+      {% if p.cover %}
+        <a href="{{ url_for(p.path) }}"
+           class="post-cover"
+           style="background-image: url({{ url_for(p.cover) }})"></a>
+      {% endif %}
+      <div class="post-excerpt">{{ p.excerpt }}</div>
+    </div>
+    <div class="post__foot">
+      <div class="post-tags">{{ partial("_partials/macros/tags.njk", {tags: p.tags}) }}</div>
+    </div>
+  </div>
+{% endfor %}

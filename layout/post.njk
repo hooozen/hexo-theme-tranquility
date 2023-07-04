@@ -1,11 +1,11 @@
 {% extends "_partials/layout.njk" %}
 {% block link %}
-  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
-  {% if theme.gitalk.enable %}<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>{% endif %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for("/css/post.css") }}" />
+  {% if theme.gitalk.enable %}<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />{% endif %}
 {% endblock link %}
 {% block body %}
   <article class="post-content">
-    <div class="post-inner{{'--toc' if page.toc else ''}}">
+    <div class="post-inner{{ '--toc' if page.toc else '' }}">
       <div class="post-content__head">
         <div class="post-title">{{ page.title or "未命名" }}</div>
         <div class="post-info">
@@ -13,24 +13,21 @@
           <span class="post-date">{{ date(page.date) }}</span>
         </div>
       </div>
-      <aside class="toc-outer">
-        <ol class="post-toc">
-          {% if page.toc %}
-            <div class="toc-title">目录</div>
-            {{ toc(page.content, {list_number: false, max_depth: 4}) }}
-            <a href="{{page.link}}#" class="toc-top">回到顶部</a>
-          {% endif %}
-        </ol>
-      </aside>
+      {% if page.toc %}
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          {{ toc(page.content, {list_number: false, max_depth: 4, class: 'post-toc'}) }}
+          <a href="{{ page.link }}#" class="toc-top">回到顶部</a>
+        </aside>
+      {% endif %}
       <div class="post-content__body">
         {% if page.photos %}
           <div class="post-gallery">
-            {% for photo in page.photos %}<img width="auto" height="auto" alt="cover" src="{{ photo }}"/>{% endfor %}
+            {% for photo in page.photos %}<img width="auto" height="auto" alt="cover" src="{{ url_for(photo) }}" />{% endfor %}
           </div>
         {% endif %}
         {{ page.content }}
       </div>
-
     </div>
   </article>
   <div class="post__foot">
@@ -41,12 +38,9 @@
     {% if theme.related_post.enable %}
       {% include "_partials/components/related-post.njk" %}
     {% endif %}
-    {% if theme.gitalk.enable %}
-      <div id="gitalk-container"></div>
-    {% endif %}
+    {% if theme.gitalk.enable %}<div id="gitalk-container"></div>{% endif %}
   </div>
 {% endblock body %}
 {% block script %}
-  {% if theme.gitalk.enable %}{{ partial("_third_party/gitalk.njk")}}
-  {% endif %}
+  {% if theme.gitalk.enable %}{{ partial("_third_party/gitalk.njk") }}{% endif %}
 {% endblock script %}

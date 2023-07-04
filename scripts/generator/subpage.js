@@ -62,6 +62,7 @@ function subpage_generator(locals) {
     }
 
     const posts = category.posts.sort(orderBy);
+    posts.data.sort((a, b) => (b.sticky || 0) - (a.sticky || 0));
     const ids = getTagIds(category);
 
     const Tag = ctx.model('Tag');
