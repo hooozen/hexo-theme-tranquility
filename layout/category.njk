@@ -1,8 +1,6 @@
 {% extends "_partials/layout.njk" %}
 {% block link %}
-  <link rel="stylesheet"
-        type="text/css"
-        href="{{ url_for('/css/category.css')}}"/>
+  <link rel="stylesheet" type="text/css" href="{{ url_for("/css/category.css") }}" />
 {% endblock link %}
 {% block body %}
   <div class="wall wall-category">
@@ -14,31 +12,33 @@
       </div>
       <div class="wall-category-description">{{ page.description }}</div>
       <div class="wall-category-tags">
-        <script type="text/javascript" charset="utf-8" src="{{ url_for('/js/tagcanvas.min.js') }}"></script>
+        <script type="text/javascript"
+                charset="utf-8"
+                src="{{ url_for('/js/tagcanvas.min.js') }}"></script>
         <script type = "text/javascript">
-          window.onload = function() {
-              try {
-                  TagCanvas.Start('tagCanvas', '', {
-                      outlineThickness: 1,
-                      maxSpeed: 0.03,
-                      // freezeActive: true,
-                      // freezeDecel: true,
-                      textColour: null,
-                      textColour: null,
-                      outlineColour: "#aaa",
-                      weight: true,
-                      padding: 4,
-                      // clickToFront: 200,
-                      fadIn: 200,
-                      // pinchZoom: true,
-                      wheelZoom: false,
-                      initial: [0.1, -0.03]
-                  });
-              } catch (e) {
-                  // something went wrong, hide the canvas container
-                  document.getElementById('tags-outer').style.display = 'none';
-              }
-          };
+            window.onload = function() {
+                try {
+                    TagCanvas.Start('tagCanvas', '', {
+                        outlineThickness: 1,
+                        maxSpeed: 0.03,
+                        // freezeActive: true,
+                        // freezeDecel: true,
+                        textColour: null,
+                        textColour: null,
+                        outlineColour: "#aaa",
+                        weight: true,
+                        padding: 4,
+                        // clickToFront: 200,
+                        fadIn: 200,
+                        // pinchZoom: true,
+                        wheelZoom: false,
+                        initial: [0.1, -0.03]
+                    });
+                } catch (e) {
+                    // something went wrong, hide the canvas container
+                    document.getElementById('tags-outer').style.display = 'none';
+                }
+            };
         </script>
         <div id="tags-outer">
           <canvas width="500" height="500" id="tagCanvas">
@@ -56,16 +56,18 @@
     {% if not page.posts %}
       DEBUG: 该子页分类下没有文章！在指定文章头部中添加 category: {{ page.name }} 字段，即可将该文章添加至此页。
     {% else %}
-      {% for p in page.posts.toArray()%}
-        <div class="post-card">
+      {% for p in page.posts.toArray() %}
+        {% set sticky = p.sticky %}
+        <div class="post-card{{'--sticky' if sticky else ''}}">
           <div class="post__head">
             <a href="{{ url_for(p.path) }}" class="post-title hover-line">{{ p.title or "未命名" }}</a>
+            {% if p.sticky %}<span class="post-title-pined">置顶</span>{% endif %}
           </div>
           <div class="post__body">
             {% if p.cover %}
-              <a href="{{ url_for(p.path)}}"
+              <a href="{{ url_for(p.path) }}"
                  class="post-cover"
-                 style="background-image: url({{ url_for(p.cover)}})"></a>
+                 style="background-image: url({{ url_for(p.cover) }})"></a>
             {% endif %}
             <div class="post-excerpt">{{ p.excerpt }}</div>
           </div>
@@ -75,6 +77,6 @@
         </div>
       {% endfor %}
     {% endif %}
-    {% if page.prev or page.next %}<div class="paginator">{{ paginator({prev_next: false})}}</div>{% endif %}
+    {% if page.prev or page.next %}<div class="paginator">{{ paginator({"prev_next": false}) }}</div>{% endif %}
   </div>
 {% endblock body %}
