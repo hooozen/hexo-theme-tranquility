@@ -40,7 +40,9 @@ function compress(text, params) {
   glyphs = [notdefGlyph].concat(font.stringToGlyphs(text));
 
   const sub_font = new opentype.Font({
-    ...font,
+    unitsPerEm: font.unitsPerEm,
+    ascender: font.ascender,
+    descender: font.descender,
     familyName: name,
     styleName: style,
     glyphs: glyphs
@@ -57,21 +59,9 @@ function getSubText(hexo) {
     .concat(config.index.about.text)
     .concat(config.index.poem)
     .concat(config.foot.title)
-    .join("").split("").concat([" "]);
-  text = handleAscii(Array.from(new Set(text)));
+    .join("").split("");
 
-  // .filter(rune => /[\u4e00-\u9fa5]/.test(rune))
+  return Array.from(new Set(text))
+    .sort().join("");
   // must be sorted and .notdef at first position. see: https://github.com/opentypejs/opentype.js/issues/94
-  return text.sort().join("");
-}
-
-function handleAscii(text) {
-  const ascii = text.filter(w => 0x21 <= w.charCodeAt() && w.charCodeAt() <= 0x7E);
-  const capital = ascii.filter(w => 0x41 <= w.charCodeAt() && w.charCodeAt() <= 0x5A);
-  const lowcase = ascii.filter(w => 0x61 <= w.charCodeAt() && w.charCodeAt() <= 0x7A);
-  const res = text
-    .concat(ascii.map(w => String.fromCharCode(w.charCodeAt() + 0xFEE0)))
-    .concat(capital.map(w => String.fromCharCode(w.charCodeAt() + 0x20)))
-    .concat(lowcase.map(w => String.fromCharCode(w.charCodeAt() - 0x20)));
-  return Array.from(new Set(res));
 }
