@@ -2,6 +2,7 @@ const opentype = require('opentype.js');
 const path = require('path');
 const fs = require('fs');
 const { Buffer } = require("node:buffer");
+const { getObjValues } = require("../_utils");
 
 const notdefGlyph = new opentype.Glyph({
   name: '.notdef',
@@ -53,15 +54,17 @@ function compress(text, params) {
 
 function getSubText(hexo) {
   const config = hexo.theme.config;
+
   let text = [config.slogan, config.index.about.title]
     .concat(config.subpage.pages.map(p => p.description))
     .concat(hexo.locals.get('tags').map(tag => tag.name))
     .concat(config.index.about.text)
     .concat(config.index.poem)
-    .concat(config.foot.title)
-    .join("").split("");
+    .concat(config.foot.title);
 
-  return Array.from(new Set(text))
+  if (config.cv) text = text.concat(getObjValues(config.cv));
+
+  return Array.from(new Set(text.join("").split("")))
     .sort().join("");
   // must be sorted and .notdef at first position. see: https://github.com/opentypejs/opentype.js/issues/94
 }

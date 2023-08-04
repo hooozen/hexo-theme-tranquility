@@ -1,0 +1,111 @@
+:root {
+  --primary-color: #084383;
+  --text-color: #000;
+}
+
+p {
+  margin: 0.4em 0;
+  line-height: 1.5em;
+  padding-left: 1em;
+}
+
+body {
+  font-size: 16px;
+  font-family: sourceHanSerif;
+}
+
+@media print {
+  html, body {
+    width: 210mm;
+  }
+}
+
+@media screen {
+  html, body {
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .paper {
+    background-color: #fff;
+    width: 900px;
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.text-icon {
+  margin-right: 0.25em;
+  fill: var(--primary-color);
+  position: relative;
+  bottom: -0.125em;
+}
+
+.text-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.base-info {
+  display: flex;
+}
+
+.info-item {
+  line-height: 1.5em;
+  margin-right: 1em;
+}
+
+.links {
+  margin: 0.4em 0 1em;
+  display: flex;
+}
+
+.links>a {
+  margin-right: 2em;
+}
+
+.chapter {
+  margin: 1em 0;
+}
+
+.chapter-title {
+  font-size: 1.3rem;
+  margin: 0.1rem 0 0.5rem;
+  font-weight: bold;
+}
+
+.tips {
+  font-size: 0.5em;
+  font-family: sans-serif;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.section {
+  margin: 0;
+}
+
+.section__head {
+  display: flex;
+  font-family: sans-serif;
+  align-items: flex-end;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.section-title {
+  margin-right: 0.4em;
+  font-weight: bold;
+
+  &-des {
+    font-size: 0.8em;
+  }
+}
