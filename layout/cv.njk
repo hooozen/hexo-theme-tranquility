@@ -85,7 +85,7 @@
             {% if projects.tips %}<div class="tips">{{ projects.tips }}</div>{% endif %}
           </div>
           {% for sec in projects.sections %}
-            <a href="{{ sec.info or '#' }}" class="section__head">
+            <a href="{{ sec.link or '#' }}" class="section__head">
               <div class="section-title">{{ sec.title }}</div>
               <div class="section-title-des">{{ sec.description }}</div>
             </a>
