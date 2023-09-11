@@ -24,21 +24,29 @@
           {% endfor %}
         </div>
         <div class="links">
-          <a href="tel:{{ info.tel }}" class="text-link">
-            {{ fa_inline('mobile', {prefix: 'fas'}) }}
-            {{ info.tel }}</a>
-          <a href="mailto:{{ info.email }}" class="text-link">
-            {{ fa_inline('envelope', {prefix: 'fas'}) }}
-            {{ info.email }}
-          </a>
-          <a href="https://github.com/{{ info.github }}" class="text-link">
-            {{ fa_inline('github', {prefix: 'fab'}) }}
-            {{ info.github }}
-          </a>
-          <a href="{{ info.blogHref }}" class="text-link">
-            {{ fa_inline('blog', {prefix: 'fas'}) }}
-            {{ info.blog }}
-          </a>
+          {% if info.tel %}
+            <a href="tel:{{ info.tel }}" class="text-link">
+              {{ fa_inline('mobile', {prefix: 'fas'}) }}
+              {{ info.tel }}</a>
+          {% endif %}
+          {% if info.email %}
+            <a href="mailto:{{ info.email }}" class="text-link">
+              {{ fa_inline('envelope', {prefix: 'fas'}) }}
+              {{ info.email }}
+            </a>
+          {% endif %}
+          {% if info.github %}
+            <a href="https://github.com/{{ info.github }}" class="text-link">
+              {{ fa_inline('github', {prefix: 'fab'}) }}
+              {{ info.github }}
+            </a>
+          {% endif %}
+          {% if info.blogHref %}
+            <a href="{{ info.blogHref }}" class="text-link">
+              {{ fa_inline('blog', {prefix: 'fas'}) }}
+              {{ info.blog }}
+            </a>
+          {% endif %}
         </div>
       </header>
       <article>
@@ -58,7 +66,11 @@
           <div class="chapter">
             <div class="chapter-title">
               {% if chp.icon %}
-                {{ fa_inline(chp.icon.name, {prefix: chp.icon.type}) }}
+                {% if chp.icon.name%}
+                  {{ fa_inline(chp.icon.name, {prefix: chp.icon.type}) }}
+                {% else %}
+                  {{ fa_inline(chp.icon, {prefix: info.iconPrefix}) }}
+                {% endif %}
               {% endif %}
               {{ chp.title }}
               {% if chp.tips %}
