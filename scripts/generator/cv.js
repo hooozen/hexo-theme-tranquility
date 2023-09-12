@@ -9,7 +9,7 @@ module.exports = ctx => {
 
 function cvGenerator(locals) {
   const config = this.theme.config;
-  if (!config.cv.enable) return;
+  if (!config.cv || !config.cv.enable) return;
 
   return {
     path: '/cv/index.html',
