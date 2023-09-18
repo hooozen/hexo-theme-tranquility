@@ -1,4 +1,4 @@
-const { library, dom, icon: getIcon, icon } = require('@fortawesome/fontawesome-svg-core');
+const { library, dom, icon: getIcon } = require('@fortawesome/fontawesome-svg-core');
 
 function tryInstall(block) {
   try {

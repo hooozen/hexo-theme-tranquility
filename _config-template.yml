@@ -11,21 +11,21 @@ favicon: # 配置网页图标
   safari_pinned_tab: /images/logo.svg
 
 subpage: # 开启“子页”功能，详见 README
-  enable: false
+  enable: true
   pages:
-    - name: page1 # 文章的分类（category）名，如 developer
-      path: # 若不设置则默认使用 name
-      title: 子页一 # 菜单名，如 开发者
+    - name: featTest # 文章的分类（category）名，如 developer
+      path: feat # 若不设置则默认使用 name
+      title: 特性测试 # 菜单名，如 开发者
       icon: /images/icon/icon-code.svg # 图标的路径
-      description: # 描述
-    - name: page2 # 文章的分类（category）名，如 developer
-      path: # 若不设置则默认使用 name
-      title: 子页二 # 菜单名，如 开发者
+      description: 主题的功能测试 # 描述
+    - name: baseTest # 文章的分类（category）名，如 developer
+      path: base # 若不设置则默认使用 name
+      title: 基础测试 # 菜单名，如 开发者
       icon: /images/icon/icon-pi.svg # 图标的路径
-      description: # 描述
+      description: 基于 hexo 官方的基础测试 # 描述
 
 index: # 配置首页个性化内容
-  motto: "应无所住 而生其心"
+  motto: "长风破浪会有时！"
   poem:
     - 君不见高堂明镜悲白发
     - 朝如青丝暮成雪
@@ -47,23 +47,25 @@ foot:
 links: # 朋友
   - name: "Theme Tranquility"
     url: https://github.com/hooozen/hexo-theme-tranquility
+  - name: "浩然的主页"
+    url: https://hozen.site
 
-social: # 账号
-  - name: "github"
+social:
+  - name: "hooozen"
     icon: "/images/logo-github.svg"
-    url: https://github.com/
-  - name: "微信公众号"
+    url: https://github.com/hooozen
+  - name: "谁在胡言乱语"
     icon: "/images/logo-wx.svg"
     url: https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd
-  - name: "知乎"
+  - name: "Mundooo"
     icon: "/images/logo-zh.svg"
-    url: https://www.zhihu.com/
+    url: https://www.zhihu.com/people/hozen
 
 reward: # 赞赏
-  enable: false
-  face: # 头像图片
-  paycode: # 支付码图片
-  text: “请作者喝杯咖啡”
+  enable: true
+  face: /assets/author-face.jpg # 头像图片
+  paycode: /assets/pay-code.jpg # 支付码图片
+  text: “给作者倒杯卡布奇诺”
   btnText: 喜欢作者
 
 # see https://github.com/gitalk/gitalk
@@ -85,7 +87,7 @@ gitalk: # gitalk 评论
 
 # see https://github.com/tea3/hexo-related-popular-posts
 related_post:
-  enable: false
+  enable: true
   config:
     maxCount: 5 # Maximum count of a list. default 5
     ulClass: # Class name of element. deafult 'popular-posts'
@@ -126,14 +128,78 @@ timeline:
     - name: app
       color: "#60a465"
       icon: /images/icon/icon-app.svg
-      checked: false
+      checked: true
     - name: event
       color: "#568dc4"
       icon: /images/icon/icon-event.svg
-      checked: true
+      checked: false
 
 # 标签云
 tagcloud:
   fancy: false
   min_font: 14
   max_font: 30
+
+cv:
+  enable: true
+  showInNav: true
+  iconPrefix: fas
+  keywords: 简历,李白
+  description: 李白的简历
+  title: 李白的简历
+  content:
+    title: 李白
+    baseInfo:
+      - 唐朝
+      - 诗人
+      - 太白
+      - 青莲居士
+    tel: 八八八八八
+    email: 李白@唐.中文
+    github: 暂无
+    blog: Tranquility
+    blogHref: https://theme.hozen.site/tranquility/
+    edu:
+      title: "教育背景"
+      content:
+        - 701 至 715，修习诗词剑术
+        - 718 至 724，蜀地隐居
+    chapters:
+      - title: "代表作品"
+        icon: person-digging
+        tips: 请点击项目名称查看项目详情
+        sections:
+          - title: 蜀道难
+            link: https://so.gushiwen.cn/shiwenv_d59ec5d6c91c.aspx
+            description: 乐府诗、浪漫主义
+            content:
+              - 天宝元年
+              - 这首诗是袭用乐府旧题，意在送友人入蜀。诗人以浪漫主义的手法，展开丰富的想象，艺术地再现了蜀道峥嵘，突兀，强悍、崎岖等奇丽惊险和不可凌越的磅礴气势，借以歌咏蜀地山川的壮秀，显示出祖国山河的雄伟壮丽。
+              - 至于本诗是否有更深的寓意，历代有各种不同看法。然而就诗论诗，不一定强析有寓意。但从诗中，“所守或匪亲，化为狼与豺”看，却是在写蜀地山川峻美的同时，告诫当局，蜀地险要，应好好用人防守。
+              - 诗采用律体与散文间杂，文句参差，笔意纵横，豪放洒脱。全诗感情强烈，一唱三叹，回环反复，读来令人心潮激荡。
+          - title: 将进酒
+            link: https://so.gushiwen.cn/shiwenv_ee16df5673bc.aspx
+            description: 乐府七言歌行
+            content:
+              - 开元二十二年
+              - 这首诗是诗人当时和友人岑勋在嵩山另一老友元丹丘的颍阳山居作客，作者正值仕途遇挫之际，所以借酒兴诗，来了一次酣畅淋漓的抒发。在这首诗里，李白“借题发挥”，借酒消愁，感叹人生易老，抒发了自己怀才不遇的心情。
+              - 这首诗十分形象的体现了李白桀骜不驯的性格：对自己充满自信、孤高自傲、热情豪放，“天生我材必有用”、“人生得意须尽欢”。全诗气势豪迈，感情豪放，言语流畅，具有极强的感染力。李白咏酒的诗歌非常能体现他的个性，思想内容深沉，艺术表现成熟。《将进酒》即为其代表作。
+      - title: 工作经验
+        icon: laptop-code
+        sections:
+          - title: 大唐翰林供奉
+            description: 743 - 744
+            content:
+              - 赐宫锦袍。暮春，兴庆池牡丹盛开，玄宗与杨玉环同赏，李白又奉诏作《清平调》。对御用文人生活日渐厌倦，始纵酒以自昏秽。
+              - 与贺知章等人结“酒中八仙”之游，玄宗呼之不朝。尝奉诏醉中起草诏书，引足令高力士脱靴，宫中人恨之，谗谤于玄宗，玄宗疏之，后玄宗赐金放还。
+      - title: 荣誉奖项
+        icon: trophy
+        list: true
+        content:
+          - 诗仙
+          - 酒中八仙
+      - title: 个人小结
+        icon: ranking-star
+        content:
+          - 为人爽朗大方，乐于交友，爱好饮酒作诗，名列“酒中八仙”  。曾经得到唐玄宗李隆基赏识，担任翰林供奉， 赐金放还，游历全国，先后迎娶宰相许圉师、宗楚客的孙女。唐肃宗即位后，卷入永王之乱，流放夜郎，辗转到达当涂县令李阳冰家。上元二年，去世，时年六十二。
+          - 著有《李太白集》，代表作有《望庐山瀑布》《行路难》《蜀道难》《将进酒》《早发白帝城》等。 李白所作词赋，就其开创意义及艺术成就而言，享有极为崇高的地位，后世誉为“诗仙”，与诗圣杜甫并称“李杜”。

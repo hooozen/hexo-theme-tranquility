@@ -72,6 +72,27 @@
 4. 主题配置
     将主题目录下的配置文件 `themes/tranquility/_config-template.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
 
+5. 补充(*针对非开发者*)
+    阅读报错可以使我们更快的定位问题，例如：
+
+    - 缺少依赖
+
+      随着主题的更新可能会依赖更多的第三方模块，此时用户需要自己添加新的依赖。例如，运行报错内容如下：
+
+      ```log
+      ...
+      Error: Cannot find module 'a_third_module'
+      ...
+      ```
+
+      显然根据提示，缺少名为 `a_third_module` 的模块，只需要安装该依赖即可：
+
+      ```bash
+      npm install a_third_module
+      ```
+
+      参考 [npm-install | npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install)
+
 ## 升级
 
 本主题在不停迭代，当使用过程中遇到问题时可以查看主题是否已经有了更新。主题升级的步骤如下：
