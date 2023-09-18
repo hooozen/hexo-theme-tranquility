@@ -72,7 +72,7 @@
 4. 主题配置
     将主题目录下的配置文件 `themes/tranquility/_config-template.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
 
-5. 补充(*针对非开发者*)
+5. 补充(*针对非开发者*)  
     阅读报错可以使我们更快的定位问题，例如：
 
     - 缺少依赖
