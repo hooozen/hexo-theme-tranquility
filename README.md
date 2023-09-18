@@ -203,6 +203,15 @@ timeline: article  # 展示在时间线列表中
 
 此功能提供一个线上简历页面，通过浏览器的打印功能可以导出 PDF，并且通过超链接保持简历的时效。通过主题配置文件的 `cv` 字段配置。
 
+首先需要安装以下依赖：
+
+```
+npm install @fortawesome/fontawesome-svg-core --save
+npm install @fortawesome/free-solid-svg-icons --save
+npm install @fortawesome/free-regular-svg-icons --save
+npm install @fortawesome/free-brands-svg-icons --save
+```
+
 博客的基础配置如下：
 
 - `enable: true` 是否开启简历功能
