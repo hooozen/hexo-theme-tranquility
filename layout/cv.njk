@@ -69,7 +69,7 @@
                 {% if chp.icon.name%}
                   {{ fa_inline(chp.icon.name, {prefix: chp.icon.type}) }}
                 {% else %}
-                  {{ fa_inline(chp.icon, {prefix: info.iconPrefix}) }}
+                  {{ fa_inline(chp.icon, {prefix: page.iconPrefix}) }}
                 {% endif %}
               {% endif %}
               {{ chp.title }}
