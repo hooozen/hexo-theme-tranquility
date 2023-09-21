@@ -141,8 +141,8 @@ tagcloud:
   max_font: 30
 
 cv:
-  enable: true
-  showInNav: true
+  enable: false
+  showInNav: false
   iconPrefix: fas
   keywords: 简历,李白
   description: 李白的简历

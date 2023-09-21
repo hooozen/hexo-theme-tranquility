@@ -44,7 +44,6 @@
   - [标签云](#标签云)
   - [文章封面](#文章封面)
   - [文章置顶](#文章置顶)
-  - [文章置顶](#文章置顶)
   - [文章赞赏](#文章赞赏)
   - [相关文章](#相关文章)
   - [其他](#其他)
@@ -70,7 +69,7 @@
     ```
 
 4. 主题配置
-    将主题目录下的配置文件 `themes/tranquility/_config-template.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[主题配置](#主题配置)或阅读配置文件的注释。
+    将主题目录下的配置文件 `themes/tranquility/_config-template.yml` 复制到博客文件根目录下，并重命名为 `_config.tranquility.yml`。在 `_config.tranquility.yml` 个性化主题配置，具体的配置项查看[配置](#配置)或阅读配置文件的注释。
 
 5. 补充(*针对非开发者*)
     阅读报错可以使我们更快的定位问题，例如：
@@ -205,11 +204,8 @@ timeline: article  # 展示在时间线列表中
 
 首先需要安装以下依赖：
 
-```
-npm install @fortawesome/fontawesome-svg-core --save
-npm install @fortawesome/free-solid-svg-icons --save
-npm install @fortawesome/free-regular-svg-icons --save
-npm install @fortawesome/free-brands-svg-icons --save
+```bash
+npm install hexo-fontawesome-icons
 ```
 
 博客的基础配置如下：
