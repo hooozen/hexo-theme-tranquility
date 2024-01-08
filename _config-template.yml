@@ -98,6 +98,13 @@ related_post:
     PPCategoryFilter: # Option to fix category on Popular Posts. undefined
     PPTagFilter: # Option to fix tag on Popular Posts. undefined
 
+# see https://github.com/knsv/mermaid
+mermaid:
+  enable: false
+  version: latest
+  options:  # more options see http://mermaid.js.org/config/usage.html
+    startOnload: true
+
 # Baidu Webmaster tools verification.
 # See: https://ziyuan.baidu.com/site
 baidu_site_verification:
