@@ -29,23 +29,27 @@
 
 ## 目录
 
+- [特点](#特点)
+- [目录](#目录)
 - [安装](#安装)
 - [升级](#升级)
 - [设计逻辑](#设计逻辑)
   - [改变](#改变)
 - [配置](#配置)
   - [子页](#子页)
-  - [首页自定义](#首页自定义)
-  - [页脚自定义](#页脚自定义)
   - [时间线](#时间线)
   - [简历](#简历)
-  - [数学公式](#数学公式)
   - [代码高亮](#代码高亮)
+  - [数学公式](#数学公式)
+  - [首页自定义](#首页自定义)
+  - [页脚自定义](#页脚自定义)
   - [标签云](#标签云)
   - [文章封面](#文章封面)
+  - [文章目录](#文章目录)
   - [文章置顶](#文章置顶)
   - [文章赞赏](#文章赞赏)
   - [相关文章](#相关文章)
+  - [自定义字体](#自定义字体)
   - [其他](#其他)
 
 ## 安装
@@ -273,7 +277,7 @@ chapters:
 
 ### 代码高亮
 
-代码高亮依赖于博客**根目录**下的 `_config.yml` 的`highlight` 配置，请配置如下：
+代码高亮依赖于博客**根目录**下的 `_config.yml` 的 `highlight` 配置，请配置如下：
 
 ```yml
 highlight:
@@ -366,6 +370,38 @@ mathjax: true # 加载 LateX 数学公式库
 主题的部分区域为了设计感使用了第三方的汉字字体。但由于汉字字体包太大，因此本主题对用户使用的部分字体进行了提取打包成子字体。
 
 通过 `zh_font` 配置项进行开启或关闭
+
+### Mermaid 增强
+
+Mermaid 是一个基于 Javascript 的图表绘制工具，通过解析类 Markdown 的文本语法来实现图表的创建和动态修改。
+
+- 首先安装依赖
+
+    ```bash
+    npm install hexo-filter-mermaid-diagrams
+    ```
+
+- 在配置文件中启用
+
+    ```yml
+    mermaid:
+      enable: true # 启用 Mermaid 增强
+      version: latest
+      options: 
+        startOnload: true
+    ```
+
+- 然后就可以在 markdown 文章中绘图了（GitHub 会自动渲染，用法就是代码块设置为 mermaid）
+
+    ```mermaid
+    graph LR
+      A --> B
+      A --> D
+    ```
+
+- 如果想要在本地预览 mermaid 的渲染结果，需要支持 mermaid 的 markdown 编译器。如果使用 vscode，需要下载 [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) 这个插件。
+
+- Mermaid 的具体的用法可参考 [Mermaid 指引](http://mermaid.js.org/intro/)。
 
 ### 其他
 
