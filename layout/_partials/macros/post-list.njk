@@ -11,7 +11,7 @@
            class="post-cover"
            style="background-image: url({{ url_for(p.cover) }})"></a>
       {% endif %}
-      <div class="post-excerpt">{{ p.excerpt }}</div>
+      <div class="post-excerpt">{{ p.abstract or p.excerpt }}</div>
     </div>
     <div class="post__foot">
       <div class="post-tags">{{ partial("_partials/macros/tags.njk", {tags: p.tags}) }}</div>
