@@ -166,7 +166,7 @@
     {% endif %}
     {% if theme.search.enable %}
       <script src="{{url_for('js/search.js')}}"></script>
-      <script>searchInitialize("{{url_for(config.search.path)}}")</script>
+      <script>searchInitialize("{{url_for(theme.search.path)}}")</script>
     {% endif %}
     {% block script %}
     {% endblock script %}

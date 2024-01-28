@@ -1,4 +1,4 @@
-const htmlGenerator = require("./htmlGenerator");
+const htmlGenerator = require("./htmlGenerator.js");
 const trqlt_tagcloud = require('./tagcloud.js');
 
 module.exports = function (hexo) {

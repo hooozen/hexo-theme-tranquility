@@ -23,30 +23,34 @@ function closeSearchDialog() {
   searchStatus = 0
 }
 
-document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key == "k") {
-    if (searchStatus) closeSearchDialog()
-    else showSearchDialog()
-  }
-})
-
-searchClearBtn.addEventListener('click', () => {
-  searchIpt.value = ""
-  clearResult()
-})
-
-searchBtn.addEventListener('click', () => {
-  showSearchDialog()
-})
-
-searchMask.addEventListener('click', e => {
-  if (e.target !== searchMask) return
-  closeSearchDialog()
-}, true)
-
 function searchInitialize(url) {
   fetch(url).then(res => res.json()).then(res => {
     const inputHandler = debounce(doSearch)
+
+    searchBtn.style.display = "flex"
+
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key == "k") {
+        if (searchStatus) closeSearchDialog()
+        else showSearchDialog()
+      }
+      if (e.key == 'Escape') closeSearchDialog()
+    })
+
+    searchClearBtn.addEventListener('click', () => {
+      searchIpt.value = ""
+      clearResult()
+    })
+
+    searchBtn.addEventListener('click', () => {
+      showSearchDialog()
+    })
+
+    searchMask.addEventListener('click', e => {
+      if (e.target !== searchMask) return
+      closeSearchDialog()
+    }, true)
+
     searchIpt.addEventListener('input', inputHandler.bind(searchIpt, res))
   })
 }
@@ -165,7 +169,7 @@ function binaryFind(arr, value) {
   return mid
 }
 
-function debounce(fn, t = 500) {
+function debounce(fn, t = 400) {
   let timer = null
   return function (...args) {
     clearTimeout(timer)

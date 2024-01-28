@@ -50,6 +50,9 @@
   - [文章赞赏](#文章赞赏)
   - [相关文章](#相关文章)
   - [自定义字体](#自定义字体)
+  - [Mermaid 增强](#mermaid-增强)
+  - [文章搜索](#文章搜索)
+  - [文章摘要](#文章摘要)
   - [其他](#其他)
 
 ## 安装
@@ -403,6 +406,37 @@ Mermaid 是一个基于 Javascript 的图表绘制工具，通过解析类 Markd
 
 - Mermaid 的具体的用法可参考 [Mermaid 指引](http://mermaid.js.org/intro/)。
 
+### 文章搜索
+
+新增搜索功能，通过如下配置主题配置文件启用：
+
+```yml
+search:
+  path: search.json
+  enable: true
+  field: post
+  content: true
+```
+
+### 文章摘要
+
+我们都知道通过在 markdown 文件中使用 `<!--more-->` 可以截断文章，使得在这之前的内容可以作为 excerpt 显示在文章列表页。另外，也可以在[Front-matter](https://hexo.io/zh-cn/docs/front-matter)中设置 abstract 字段来设置隐藏式摘要。
+
+abstract 的设置不同于通过在正文使用 <!--more--> 隔断的节录（excerpt）。abstract 的内容不会再出现在正文中，并且设置 abstrct 后会覆盖 excerpt 在文章列表的中的展示。
+
+abstract 功能功能类似微信公众号的摘要表现。
+
+```yml
+---
+title: 隐藏式摘要测试
+date: 2024-01-27 11:58:32
+tags: text
+category: featTest
+cover: assets/hozen-durdledoor.jpg
+abstract: "该文章测试隐藏式摘要功能，此文本只会在文章列表展示，文章正文中不再出现。"
+---
+```
+
 ### 其他
 
 请他配置请查看配置文件注释
@@ -414,4 +448,4 @@ Mermaid 是一个基于 Javascript 的图表绘制工具，通过解析类 Markd
 -----
 
 <div id='ref1'></div>
-[1]. 引用了英雄联盟角色亚索的台词：“生命中有三件必经之事，荣誉、死亡，还有……宿醉……” 😜
+[1]. 引用了英雄联盟角色亚索的台词：“生命中有三件必经之事，荣誉、死亡，还有……宿醉……”
