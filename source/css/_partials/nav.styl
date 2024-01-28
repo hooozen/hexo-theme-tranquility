@@ -1,4 +1,9 @@
 @import '../_variables';
+@import '../_mixins';
+
+if (hexo-config('search.enable')) {
+  @import './search';
+}
 
 .nav {
   position: relative;
@@ -120,7 +125,7 @@
     }
   }
 
-  #navBtn:checked ~ .nav-menu {
+  #navBtn:checked ~ .nav-right .nav-menu {
     height: 100%;
   }
 
@@ -133,4 +138,9 @@
       transform: translateY(-4px) rotateZ(-45deg);
     }
   }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
 }

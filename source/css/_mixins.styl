@@ -1,0 +1,29 @@
+dark() {
+  @media (prefers-color-scheme: dark) {
+    {block};
+  }
+}
+
+mobile() {
+  @media (max-width: 415) {
+    {block};
+  }
+}
+
+tablet() {
+  @media (max-width: 1023px) and (min-width: 760px) {
+    {block};
+  }
+}
+
+mobile-tablet() {
+  @media (max-width: 760px) {
+    {block};
+  }
+}
+
+tablet-desktop() {
+  @media (max-width: 1023px) {
+    {block};
+  }
+}
