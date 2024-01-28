@@ -98,13 +98,6 @@ related_post:
     PPCategoryFilter: # Option to fix category on Popular Posts. undefined
     PPTagFilter: # Option to fix tag on Popular Posts. undefined
 
-# see https://github.com/knsv/mermaid
-mermaid:
-  enable: false
-  version: latest
-  options:  # more options see http://mermaid.js.org/config/usage.html
-    startOnload: true
-
 # Baidu Webmaster tools verification.
 # See: https://ziyuan.baidu.com/site
 baidu_site_verification:
@@ -120,7 +113,7 @@ zh_font:
   fontName: sourceHanSerif
   type: ttf
   style:
-    - regular
+    - normal
     - bold
 
 # 配置时间线 参考 README.md
@@ -147,9 +140,15 @@ tagcloud:
   min_font: 14
   max_font: 30
 
+mermaid:
+  enable: true # 启用 Mermaid 增强
+  version: latest
+  options:
+    startOnload: true
+
 cv:
-  enable: false
-  showInNav: false
+  enable: true
+  showInNav: true
   iconPrefix: fas
   keywords: 简历,李白
   description: 李白的简历
@@ -210,3 +209,9 @@ cv:
         content:
           - 为人爽朗大方，乐于交友，爱好饮酒作诗，名列“酒中八仙”  。曾经得到唐玄宗李隆基赏识，担任翰林供奉， 赐金放还，游历全国，先后迎娶宰相许圉师、宗楚客的孙女。唐肃宗即位后，卷入永王之乱，流放夜郎，辗转到达当涂县令李阳冰家。上元二年，去世，时年六十二。
           - 著有《李太白集》，代表作有《望庐山瀑布》《行路难》《蜀道难》《将进酒》《早发白帝城》等。 李白所作词赋，就其开创意义及艺术成就而言，享有极为崇高的地位，后世誉为“诗仙”，与诗圣杜甫并称“李杜”。
+
+search:
+  path: search.json
+  enable: true
+  field: post
+  content: true
