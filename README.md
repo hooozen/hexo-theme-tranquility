@@ -50,9 +50,11 @@
   - [文章赞赏](#文章赞赏)
   - [相关文章](#相关文章)
   - [自定义字体](#自定义字体)
-  - [Mermaid 增强](#mermaid-增强)
   - [文章搜索](#文章搜索)
   - [文章摘要](#文章摘要)
+  - [Markdown 增强](#markdown-增强)
+    - [Mermaid](#mermaid)
+    - [卡片式链接](#卡片式链接)
   - [其他](#其他)
 
 ## 安装
@@ -374,38 +376,6 @@ mathjax: true # 加载 LateX 数学公式库
 
 通过 `zh_font` 配置项进行开启或关闭
 
-### Mermaid 增强
-
-Mermaid 是一个基于 Javascript 的图表绘制工具，通过解析类 Markdown 的文本语法来实现图表的创建和动态修改。
-
-- 首先安装依赖
-
-    ```bash
-    npm install hexo-filter-mermaid-diagrams
-    ```
-
-- 在配置文件中启用
-
-    ```yml
-    mermaid:
-      enable: true # 启用 Mermaid 增强
-      version: latest
-      options: 
-        startOnload: true
-    ```
-
-- 然后就可以在 markdown 文章中绘图了（GitHub 会自动渲染，用法就是代码块设置为 mermaid）
-
-    ```mermaid
-    graph LR
-      A --> B
-      A --> D
-    ```
-
-- 如果想要在本地预览 mermaid 的渲染结果，需要支持 mermaid 的 markdown 编译器。如果使用 vscode，需要下载 [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) 这个插件。
-
-- Mermaid 的具体的用法可参考 [Mermaid 指引](http://mermaid.js.org/intro/)。
-
 ### 文章搜索
 
 新增搜索功能，通过如下配置主题配置文件启用：
@@ -436,6 +406,89 @@ cover: assets/hozen-durdledoor.jpg
 abstract: "该文章测试隐藏式摘要功能，此文本只会在文章列表展示，文章正文中不再出现。"
 ---
 ```
+
+### Markdown 增强
+
+Markdown 的表达能力终究是有限的，因此主题对 Markdown 进行了增强。
+
+#### Mermaid
+
+Mermaid 是一个基于 Javascript 的图表绘制工具，通过解析类 Markdown 的文本语法来实现图表的创建和动态修改。
+
+- 首先安装依赖
+
+    ```bash
+    npm install hexo-filter-mermaid-diagrams
+    ```
+
+- 在配置文件中启用
+
+    ```yml
+    mermaid:
+      enable: true # 启用 Mermaid 增强
+      version: latest
+      options: 
+        startOnload: true
+    ```
+
+- 然后就可以在 markdown 文章中绘图了（GitHub 会自动渲染，用法就是代码块设置为 mermaid）
+
+    ```mermaid
+    graph LR
+      A --> B
+      A --> D
+    ```
+
+- 如果想要在本地预览 mermaid 的渲染结果，需要使用支持 mermaid 的 markdown 编译器。如使用 VSCode，可下载插件 [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+
+- Mermaid 的具体的用法可参考 [Mermaid 指引](http://mermaid.js.org/intro/)。
+
+#### 卡片式链接
+
+看知乎的文章，有时候链接是卡片式的，非常美观。
+
+![卡片式链接](./doc/images/card_link.png)
+
+那么如何将我们的链接转化为卡片式的呢？主题为此做出了增强，按照下方指引直接使用即可。
+
+- 语法
+
+使用时修改 `target_link` 为目标链接，`card_title` 为链接标题。
+
+```
+<cardLink link="target_link">card_title</cardLink>
+```
+
+- 预览
+
+如使用 VSCode，可下载插件 [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid) 后，按 `Shift+Ctrl+P`，并输入 `extend parser`，打开配置文件。（建议修改 `(Workspace)` 这个文件，避免污染其他工作项目）
+
+![extend parser](./doc/images/extend_parser.png)
+
+然后将配置文件中的
+
+```javascript
+  onWillParseMarkdown: async function(markdown) {
+    return markdown;
+  },
+```
+
+修改为
+
+```javascript
+  onWillParseMarkdown: async function(markdown) {
+    return markdown.replace(
+      /<cardLink[\s]*link="([a-zA-Z]*:\/\/[^"]*)"[\s]*>([\s\S]*)<\/cardLink>/g,
+      `<div><a target="_blank" href="$1" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; max-width: 90%; min-height: 88px; border-radius: 8px; overflow: hidden; margin: 16px auto; padding: 8px 12px 6px 12px; background-color: #f6f6f6; text-decoration:none;"><div><div style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: visible; text-overflow: ellipsis; font-size: 90%; max-height: 55%; line-height: 1.25; color: #121212;">$2</div><div style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; font-size: 65%; height: 16px; max-height: 4%; line-height: 16px; margin-top: 2%; color: #999;"><div style="display: inline-flex; align-items: center;"><svg class="link" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>$1</div></div></div></a></div>`
+    );
+  },
+```
+
+渲染效果如下（GitHub 上无法渲染）
+
+<cardLink link="https://github.com/NVlabs/tiny-cuda-nn/issues/51">Complie PyTorch Bindings with float32 precision</cardLink>
+
+![渲染预览](./doc/images/card_link_preview.png)
 
 ### 其他
 
