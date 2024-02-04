@@ -215,3 +215,8 @@ search:
   enable: true
   field: post
   content: true
+
+# 代码块设置
+codeblock:
+  copy_button:
+    enable: true
