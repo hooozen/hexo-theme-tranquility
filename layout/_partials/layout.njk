@@ -64,7 +64,9 @@
     {% endblock link %}
   </head>
   <body>
-    {% if theme.search.enable %}
+    {% if theme.algolia and theme.algolia.enable %}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    {% elif theme.search and theme.search.enable %}
       {% include("./components/search-main.njk") %}
     {% endif %}
     <div class="head">
@@ -74,8 +76,10 @@
         </a>
         <input id="navBtn" type="checkbox" />
         <div class="nav-right">
-          {% if theme.search.enable %}
-            {% include("./components/search-btn.njk") %}
+          {% if theme.algolia and theme.algolia.enable %}
+            <div class="search-outer" id="algolia-search"></div>
+          {% elif theme.search and theme.search.enable %}
+            <div class="search-outer">{% include("./components/search-btn.njk") %}</div>
           {% endif %}
           <div class="nav-menu">
             {% if theme.subpage.enable %}
@@ -164,7 +168,19 @@
               async
               src="https://www.unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
     {% endif %}
-    {% if theme.search.enable %}
+    {% if theme.algolia and theme.algolia.enable %}
+      <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+      <script type="text/javascript">
+        docsearch({
+          appId: '{{theme.algolia.appId}}',
+          apiKey: '{{theme.algolia.apiKey}}',
+          indexName: '{{theme.algolia.indexName}}',
+          insights: '{{theme.algolia.insights}}',
+          container: 'div#algolia-search',
+          debug: '{{theme.algolia.debug}}'
+        });
+      </script>
+    {% elif theme.search and theme.search.enable %}
       <script src="{{url_for('js/search.js')}}"></script>
       <script>searchInitialize("{{url_for(theme.search.path)}}")</script>
     {% endif %}
