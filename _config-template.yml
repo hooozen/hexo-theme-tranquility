@@ -215,3 +215,12 @@ search:
   enable: true
   field: post
   content: true
+
+algolia:
+  enable: false
+  appId: FRGETL4B6V
+  # apiKey: d464264837e3884158e52e9ebeb51a73
+  apiKey: e3ba87899b1dee57238bc41b839674fa
+  indexName: hozen
+  insights: true
+  debug: false
