@@ -218,9 +218,12 @@ search:
 
 algolia:
   enable: false
-  appId: FRGETL4B6V
-  # apiKey: d464264837e3884158e52e9ebeb51a73
-  apiKey: e3ba87899b1dee57238bc41b839674fa
-  indexName: hozen
+  appId:
+  apiKey:
+  indexName:
   insights: true
   debug: false
+# 代码块设置
+codeblock:
+  copy_button:
+    enable: true

@@ -60,6 +60,7 @@
         })();
       </script>
     {% endif %}
+    <script src="https://kit.fontawesome.com/c4ba0a82e6.js" crossorigin="anonymous"></script>
     {% block link %}
     {% endblock link %}
   </head>
@@ -183,6 +184,9 @@
     {% elif theme.search and theme.search.enable %}
       <script src="{{url_for('js/search.js')}}"></script>
       <script>searchInitialize("{{url_for(theme.search.path)}}")</script>
+    {% endif %}
+    {% if theme.codeblock.copy_button.enable %}
+      <script src="{{ url_for('js/copy-code.js') }}"></script>
     {% endif %}
     {% block script %}
     {% endblock script %}
