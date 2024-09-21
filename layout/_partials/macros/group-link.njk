@@ -1,0 +1,33 @@
+{# links, groupSize #}
+{% set defaultLinkIcon = "/images/icon/icon-link.svg" %}
+{% if not groupSize %}
+  <div class="foot-link-group">
+    {% for link in links %}
+      <div class="text">
+        <img alt="link"
+             height="20px"
+             width="20px"
+             src="{{ url_for(link.icon or defaultLinkIcon) }}" />
+        <a class="foot-link" href="{{ link.url }}">{{ link.name }}</a>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  {% set groupNumber = links.length / groupSize %}
+  {% for group in range(0, groupNumber) %}
+    <div class="foot-link-group">
+      {% for i in range(0, groupSize) %}
+        {% set link = links[group * groupSize + i] %}
+        {% if link %}
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="{{ url_for(link.icon or defaultLinkIcon) }}" />
+            <a class="foot-link" href="{{ link.url }}">{{ link.name }}</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endif %}
