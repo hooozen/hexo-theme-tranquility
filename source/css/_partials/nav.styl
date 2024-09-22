@@ -16,6 +16,16 @@ if (hexo-config('search.enable')) {
   font-weight: bold;
 }
 
+.head--sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px) saturate(0.3);
+  top: 0;
+  z-index: 1;
+}
+
 #navBtn {
   top: -100px;
   position: fixed;
@@ -58,10 +68,13 @@ if (hexo-config('search.enable')) {
     height: 60px;
     background: rgba(255, 255, 255, 0.9);
     z-index: 99;
+    justify-content: center;
   }
 
-  .body {
-    padding-top: 60px;
+  .head--sticky {
+    position: relative;
+    backdrop-filter: none;
+    background: none;
   }
 
   .nav-menu {
@@ -82,10 +95,6 @@ if (hexo-config('search.enable')) {
 
   .nav-menu-item {
     margin: 20px 0;
-  }
-
-  .nav {
-    justify-content: center;
   }
 
   .nav-logo {

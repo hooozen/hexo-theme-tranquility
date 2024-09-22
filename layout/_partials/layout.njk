@@ -67,7 +67,8 @@
     {% if theme.search.enable %}
       {% include("./components/search-main.njk") %}
     {% endif %}
-    <div class="head">
+    {% set headClass = 'head--sticky'if theme.nav and theme.nav.sticky else 'head' %}
+    <div class={{ headClass }}>
       <div class="nav">
         <a href='{{ url_for("/") }}' class="nav-logo">
           <img alt="logo" height="60px" width="60px" src="{{ url_for(theme.logo) }}" />
