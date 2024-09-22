@@ -42,6 +42,7 @@
   - [代码高亮](#代码高亮)
   - [数学公式](#数学公式)
   - [首页自定义](#首页自定义)
+  - [导航](#导航)
   - [页脚自定义](#页脚自定义)
   - [标签云](#标签云)
   - [文章封面](#文章封面)
@@ -325,13 +326,21 @@ mathjax: true # 加载 LateX 数学公式库
 
 - 查看 `index` 配置项
 
+### 导航
+
+- `nav.sticky` 配置导航栏是否粘滞在顶部
+
 ### 页脚自定义
 
 - `foot.title` 配置页脚显式的标语
 
+- `foot.linksRows` 配置链接的行数, 参考 [issue#44](https://github.com/hooozen/hexo-theme-tranquility/issues/44).
+
 - `links` 配置友链
 
 - `social` 配置社交帐户或其他链接
+
+- `contacts` 配置联系方式
 
 ### 标签云
 

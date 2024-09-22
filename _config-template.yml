@@ -43,6 +43,7 @@ foot:
   title:
     - "海内存知己"
     - "天涯若比邻"
+  linksRows: 4
 
 links: # 朋友
   - name: "Theme Tranquility"
@@ -60,6 +61,11 @@ social:
   - name: "Mundooo"
     icon: "/images/logo-zh.svg"
     url: https://www.zhihu.com/people/hozen
+
+contacts:
+  - name: "name@example.com"
+    icon: "/images/icon/icon-email.svg"
+    url: "mailto:name@example.com"
 
 reward: # 赞赏
   enable: true
@@ -215,3 +221,6 @@ search:
   enable: true
   field: post
   content: true
+
+nav:
+  sticky: false
