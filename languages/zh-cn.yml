@@ -1,0 +1,29 @@
+name: 中文
+
+nav:
+  cv: 简历
+  view: 查看在线版本
+  blog: 博客
+
+search:
+  label: 搜索
+  placeholder: 搜索文章内容
+
+friends:
+  label: 朋友
+  apply: 交换友链
+
+socials:
+  label: 账号
+
+concats:
+  label: 联系
+
+timeline:
+  name: 时间线
+
+post:
+  next: 下一篇
+  prev: 上一篇
+  pinned: 置顶
+  untitled: 未命名

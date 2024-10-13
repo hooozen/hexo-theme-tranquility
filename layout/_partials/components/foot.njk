@@ -10,10 +10,10 @@
     <div class="foot__body">
       {% if theme.links %}
         <div class="foot-item">
-          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__head">{{ __("friends.label") }}</div>
           <div class="foot-item__body">
             {% set friendsLinks = theme.links.concat({
-                          'name': '申请友链',
+                          'name': __("friends.apply"),
                           'url': 'mailto:' + theme.email + '?subject=申请' + config.url + '的友链',
                           'icon': '/images/icon/icon-link+.svg'
                         }) %}
@@ -23,14 +23,14 @@
       {% endif %}
       {% if theme.social %}
         <div class="foot-item">
-          <div class="foot-item__head">账号</div>
+          <div class="foot-item__head">{{ __("socials.label") }}</div>
           <div class="foot-item__body">
             {{ partial("_partials/macros/group-link.njk", {links: theme.social, groupSize: theme.foot.linksRows}) }}
           </div>
         </div>
       {% endif %}
       <div class="foot-item">
-        <div class="foot-item__head">联系</div>
+        <div class="foot-item__head">{{ __("concats.label") }}</div>
         <div class="foot-item__body">
           {{ partial("_partials/macros/group-link.njk", {links: theme.contacts, groupSize: theme.foot.linksRows}) }}
         </div>

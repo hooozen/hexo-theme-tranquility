@@ -84,9 +84,11 @@
                 <a class="nav-menu-item" href="{{ url_for(nav.path or nav.name) }}">{{ nav.title }}</a>
               {% endfor %}
             {% else %}
-              <a class="nav-menu-item" href='{{ url_for("/blog/") }}'>博客</a>
+              <a class="nav-menu-item" href='{{ url_for("/blog/") }}'>{{ __("nav.blog") }}</a>
             {% endif %}
-            {% if theme.cv.enable and theme.cv.showInNav %}<a class="nav-menu-item" href='{{ url_for("/cv/") }}'>简历</a>{% endif %}
+            {% if theme.cv.enable and theme.cv.showInNav %}
+              <a class="nav-menu-item" href='{{ url_for("/cv/") }}'>{{ __("nav.cv") }}</a>
+            {% endif %}
           </div>
         </div>
         <label class="nav-btn" for="navBtn"></label>
