@@ -2,9 +2,13 @@
   <div class="foot-inner">
     <div class="foot__head">
       {% for line in theme.foot.title %}
-        <div class="foot-line">
-          {% for word in line %}<div class="matts">{{ word }}</div>{% endfor %}
-        </div>
+        {% if site.lang == 'zh-cn' %}
+          <div class="foot-line">
+            {% for word in line %}<div class="matts">{{ word }}</div>{% endfor %}
+          </div>
+        {% else %}
+          <div class="foot-line">{{ line }}</div>
+        {% endif %}
       {% endfor %}
     </div>
     <div class="foot__body">

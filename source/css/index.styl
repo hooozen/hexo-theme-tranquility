@@ -156,6 +156,7 @@ for item in hexo-config('timeline.items') {
 
 .about-photo {
   width: 300px;
+  flex: 0 0 300px;
   height: 450px;
   background: url('') center center / cover no-repeat;
   margin: 0 10px;
@@ -458,6 +459,11 @@ for v, k in timeline_colors {
     align-items: center;
   }
 
+  .about-photo {
+    flex-basis: auto;
+    align-self: center;
+  }
+
   .about-text {
     margin-bottom: 50px;
   }
@@ -513,5 +519,15 @@ for v, k in timeline_colors {
     img {
       width: 200px;
     }
+  }
+}
+
+html[lang='en'] {
+  .about-text {
+    font-family: sans;
+  }
+
+  .about-detail {
+    letter-spacing: normal;
   }
 }
