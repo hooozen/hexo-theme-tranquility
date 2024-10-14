@@ -40,7 +40,7 @@
          style="background-image: url({{ url_for(theme.index.photo) }})"></div>
     <div class="about-text">
       <div class="about-title">
-        {% if site.language == 'en' %}
+        {% if config.language == 'en' %}
           {{ theme.index.about.title }}
         {% else %}
           {% for word in theme.index.about.title %}<div class="matts">{{ word }}</div>{% endfor %}

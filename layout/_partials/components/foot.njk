@@ -2,7 +2,7 @@
   <div class="foot-inner">
     <div class="foot__head">
       {% for line in theme.foot.title %}
-        {% if site.language == 'en' %}
+        {% if config.language == 'en' %}
           <div class="foot-line">{{ line }}</div>
         {% else %}
           <div class="foot-line">
