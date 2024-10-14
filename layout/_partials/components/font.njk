@@ -1,9 +1,27 @@
+<style>
 {% for subfont in theme.zh_font.style %}
-  <style>
-    @font-face {
-        font-family:{{ theme.zh_font.fontName }};
-        src: url({{ url_for('/font/') + subfont + '.' + theme.zh_font.type }});
-        font-weight: {{ subfont }};
-    }
-  </style>
+@font-face {
+  font-family: {{ theme.zh_font.fontName }};
+  src: url({{ url_for('/font/') + subfont + '.' + theme.zh_font.type }});
+  font-weight: {{ subfont }};
+}
 {% endfor %}
+@font-face {
+  font-family: AfacadFlux;
+  src: url({{ url_for('/font/AfacadFlux-Regular.ttf') }});
+  font-weight: normal;
+}
+@font-face {
+  font-family: AfacadFlux;
+  src: url({{ url_for('/font/AfacadFlux-SemiBold.ttf') }});
+  font-weight: bold;
+}
+
+:root {
+  --fancy-font: {{ theme.zh_font.fontName }};
+}
+
+[lang=en] {
+  --fancy-font: AfacadFlux, {{ theme.zh_font.fontName }};
+}
+</style>

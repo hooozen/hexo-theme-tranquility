@@ -1,9 +1,14 @@
 name: 中文
 
+theme:
+  name: 致远
+
 nav:
   cv: 简历
-  view: 查看在线版本
   blog: 博客
+
+cv:
+  view: 查看在线版本
 
 search:
   label: 搜索

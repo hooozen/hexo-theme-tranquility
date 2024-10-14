@@ -1,9 +1,14 @@
 name: English
 
+theme:
+  name: Tranquility
+
 nav:
   cv: CV
-  view: View Online Version
   blog: Blog
+
+cv:
+  view: Click here to view the online version
 
 search:
   label: Search

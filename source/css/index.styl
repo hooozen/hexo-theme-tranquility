@@ -53,6 +53,7 @@ for item in hexo-config('timeline.items') {
   font-weight: 600;
   font-size: 72px;
   animation: flyIn 500ms ease-out;
+  font-family: var(--fancy-font);
 }
 
 .wall-subtitle {
@@ -65,7 +66,7 @@ for item in hexo-config('timeline.items') {
   font-size: 20px;
   font-weight: 400;
   margin: 10px 0;
-  font-family: sourceHanSerif;
+  font-family: var(--fancy-font);
   letter-spacing: 0.2em;
 }
 
@@ -129,7 +130,7 @@ for item in hexo-config('timeline.items') {
 .poem {
   font-size: 18px;
   position: absolute;
-  font-family: sourceHanSerif;
+  font-family: var(--fancy-font);
   left: 50%;
   top: calc(50% + 80px);
   opacity: 0.2;
@@ -170,7 +171,7 @@ for item in hexo-config('timeline.items') {
 
 .about-text {
   font-weight: bold;
-  font-family: sourceHanSerif;
+  font-family: var(--fancy-font);
 }
 
 .about-title {
@@ -522,11 +523,7 @@ for v, k in timeline_colors {
   }
 }
 
-html[lang='en'] {
-  .about-text {
-    font-family: sans;
-  }
-
+html[lang=en] {
   .about-detail {
     letter-spacing: normal;
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="{{ config.language }}">
   <meta charset="utf-8" />
   <meta name="keywords" content="{{ page.keywords }}" />
   <meta name="description" content="{{ page.description }}" />
@@ -92,7 +92,7 @@
         {% endfor %}
       </article>
       <footer>
-        <a class="online-link" href="{{ full_url_for("/cv") }}">查看在线简历获得实时更新</a>
+        <a class="online-link" href="{{ full_url_for("/cv") }}">{{ __("cv.view") }}</a>
         <a class="enginer"
            href="https://github.com/hooozen/hexo-theme-tranquility">Generate by Tranquility</a>
       </footer>
