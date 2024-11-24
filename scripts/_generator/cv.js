@@ -1,10 +1,9 @@
 /* global ctx */
 
-'use strict';
+"use strict";
 
-
-module.exports = ctx => {
-  ctx.extend.generator.register('cv', cvGenerator);
+module.exports = (ctx) => {
+  ctx.extend.generator.register("cv", cvGenerator);
 };
 
 function cvGenerator(locals) {
@@ -12,9 +11,8 @@ function cvGenerator(locals) {
   if (!config.cv || !config.cv.enable) return;
 
   return {
-    path: '/cv/index.html',
-    layout: ['cv'],
-    data: config.cv
+    path: "cv/index.html",
+    layout: ["cv"],
+    data: config.cv,
   };
-};
-
+}

@@ -70,7 +70,7 @@
     {% set headClass = 'head--sticky'if theme.nav and theme.nav.sticky else 'head' %}
     <div class={{ headClass }}>
       <div class="nav">
-        <a href='{{ url_for("/") }}' class="nav-logo">
+        <a href='{{ i18n_url_for(page.language, "/") }}' class="nav-logo">
           <img alt="logo" height="60px" width="60px" src="{{ url_for(theme.logo) }}" />
         </a>
         <input id="navBtn" type="checkbox" />
@@ -81,13 +81,16 @@
           <div class="nav-menu">
             {% if theme.subpage.enable %}
               {% for nav in theme.subpage.pages %}
-                <a class="nav-menu-item" href="{{ url_for(nav.path or nav.name) }}">{{ nav.title }}</a>
+                <a class="nav-menu-item"
+                   href="{{ i18n_url_for(page.language, nav.path or nav.name) }}">{{ nav.title }}</a>
               {% endfor %}
             {% else %}
-              <a class="nav-menu-item" href='{{ url_for("/blog/") }}'>{{ __("nav.blog") }}</a>
+              <a class="nav-menu-item"
+                 href='{{ i18n_url_for(page.language, "/blog/") }}'>{{ __("nav.blog") }}</a>
             {% endif %}
             {% if theme.cv.enable and theme.cv.showInNav %}
-              <a class="nav-menu-item" href='{{ url_for("/cv/") }}'>{{ __("nav.cv") }}</a>
+              <a class="nav-menu-item"
+                 href='{{ i18n_url_for(page.language, "/cv/") }}'>{{ __("nav.cv") }}</a>
             {% endif %}
           </div>
         </div>
