@@ -1,5 +1,4 @@
 module.exports = function (args) {
-  console.log(args);
   if (!args || !args.json || args.json.length == 0) return "";
 
   var returnHTML = "";
@@ -51,8 +50,6 @@ module.exports = function (args) {
 
   if (returnHTML != "")
     returnHTML = '<div class="' + args.class + '">' + returnHTML + "</div>";
-
-  console.log(returnHTML);
 
   return returnHTML;
 };

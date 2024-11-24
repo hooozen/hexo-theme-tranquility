@@ -1,15 +1,9 @@
 <div class="related-post">
-  {{ page.path }}
-  {{ page.title }}
-  {{ page.lang }}
-  {{ page }}
-  {{ theme.related_post.config | dump }}
   <div class="related__head">{{ partial("_partials/macros/tags.njk", {tags: page.tags}) }}</div>
   <div class="realated__body">
     {% if not popular_posts_json %}
       DEBUG: 请安装插件 <a href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 或关闭 related_post 配置!
     {% else %}
-      {{ popular_posts_json(theme.related_post.config, page) }}
       {{ htmlGenerator(popular_posts_json(theme.related_post.config, page) ) }}
     {% endif %}
   </div>

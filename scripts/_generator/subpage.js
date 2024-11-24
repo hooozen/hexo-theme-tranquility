@@ -41,17 +41,12 @@ function subpage_generator(locals) {
     return;
   }
 
-  const orderBy = this.config.subpage_generator.order_by || "-date";
-  const posts = locals.posts.sort(orderBy);
-  posts.data.sort((a, b) => (b.sticky || 0) - (a.sticky || 0));
-
   const pagesData = getPagesData(this, locals);
 
   const routes = pagesData.reduce(
     (routes, data) => routes.concat(generateSubpage(this, data)),
     []
   );
-  console.log(routes);
   return routes;
 }
 
@@ -67,13 +62,20 @@ const getTagIds = (posts) => {
   return Array.from(tag_ids);
 };
 
-const groupPostsBySubpage = (locals, subpages) => {
+const groupPostsBySubpage = (hexo, locals) => {
+  const subpages = hexo.theme.config.subpage.pages;
+  const orderBy = hexo.config.subpage_generator.order_by || "-date";
+
   return subpages.map((subpage) => {
-    const posts = locals.categories.findOne({ name: subpage.name })?.posts;
+    const posts = locals.categories
+      .findOne({ name: subpage.name })
+      ?.posts.sort(orderBy);
+    posts.data.sort((a, b) => (b.sticky || 0) - (a.sticky || 0));
+
     return {
       subpage,
-      // posts: relinkPosts(posts),
-      posts,
+      posts: relinkPosts(posts),
+      // posts,
     };
   });
 };
@@ -86,8 +88,8 @@ const groupPostsByLanguage = (posts, languages) => {
 
     return {
       language,
-      // posts: relinkPosts(filteredPosts),
-      posts: filteredPosts,
+      posts: relinkPosts(filteredPosts),
+      // posts: filteredPosts,
     };
   });
 };
@@ -110,8 +112,7 @@ const relinkPosts = (posts) => {
 };
 
 const getPagesData = (hexo, locals) => {
-  const subpages = hexo.theme.config.subpage.pages;
-  const subpageGroups = groupPostsBySubpage(locals, subpages);
+  const subpageGroups = groupPostsBySubpage(hexo, locals);
 
   const languages = hexo.config.language?.filter((lang) => lang !== "default");
 
@@ -155,7 +156,6 @@ const generateSubpage = (hexo, pageData) => {
 
   if (!posts?.length) {
     console.warn(`Warn: There is no post in subpage '${title}'`);
-    console.log(posts);
     return [
       {
         path,
@@ -169,6 +169,8 @@ const generateSubpage = (hexo, pageData) => {
 
   const allTags = hexo.model("Tag");
   const tags = allTags.find({ _id: { $in: tagIds } });
+
+  delete data.posts;
 
   return pagination(path, posts, {
     perPage,
