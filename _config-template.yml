@@ -224,3 +224,7 @@ search:
 
 nav:
   sticky: false
+
+google_ad:
+  enable: false
+  meta_tag: "G-XXXXXXXXXX" # Google Analytics meta tag
