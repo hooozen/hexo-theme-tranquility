@@ -1,7 +1,9 @@
 @import '../_variables';
 @import '../_mixins';
 
-if (hexo-config('search.enable')) {
+if (hexo-config('algolia.enable')) {
+  @import './algolia-search';
+} else if (hexo-config('search.enable')) {
   @import './search';
 }
 

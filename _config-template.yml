@@ -222,6 +222,14 @@ search:
   field: post
   content: true
 
+algolia:
+  enable: true
+  appId: appId
+  apiKey: apiKey
+  indexName: indexName
+  insights: true
+  debug: false
+
 nav:
   sticky: false
 
